@@ -1,0 +1,4 @@
+[[input_data_structure]]
+= Input data structure
+
+As the input data structure, this encoding rule uses an instance model which is based on the generic instance model defined in <<iso_19118, ISO 19118>> clause 8. The instance model is capable of representing data described by INSPIRE application schemas expressed in UML.

@@ -1,0 +1,14 @@
+= Scope
+
+This document specifies an encoding rule for representing spatial data sets in INSPIRE in RDF. It may be applied to spatial data sets meeting the requirements for the interoperability of spatial data sets and services specified in regulation 1089/2010 and the associated Data Specification documents for each spatial data theme.
+
+WARNING: *This encoding rule is an optional encoding rule and does not supersede or replace the requirements regarding encoding specified in Clause 9 of the Data Specifications.*
+
+Supporting an RDF encoding for spatial data sets in INSPIRE is intended to support the e-government and open data community in Europe, which is increasingly looking at RDF to represent data.
+
+In accordance with Article 7 of regulation 1089/2010, the encoding rule specified in this document conforms to ISO EN 19118:2011. In particular, it specifies
+
+* schema conversion rules for all spatial object types, attributes and association roles and
+* the output data structure.
+
+NOTE: The encoding rule does not provide a bijective mapping between the information items defined by the conceptual INSPIRE application schemas and their RDF encoding. For example, a transformation of a spatial object from an INSPIRE GML representation to INSPIRE RDF and back may thus result in some information loss. This is acceptable, as long as the encoding rule leads to an RDF representation that is appropriate for typical uses of INSPIRE data in an RDF context.

@@ -1,0 +1,154 @@
+[[ref_instance_cr]]
+= Instance conversion rules
+
+#TBD: What else needs to be documented in this chapter? An example instance would certainly be useful. Creating an example of an INSPIRE spatial object encoded in RDF has been postponed until this document is sufficiently stable.#
+
+
+
+== From input to output data structure
+
+An object from the input structure is converted to an RDF resource. Object properties are represented by RDF resource properties. A dataset is represented by an RDF graph.
+
+
+
+[[ref_instance_cr_resource_identifier]]
+== Resource identifiers
+
+[RECOMMENDATION, id="REC/OWL/instance/identifier/spatialobject"]
+======
+The identifier of an RDF resource that represents a spatial object should be constructed from its 'inspireId'. However, the identifier should not contain the 'versionId' from the 'inspireId'.
+
+======
+
+Versioning is a known open issue (see the <<inspire_d25,Generic Conceptual Model>>, section 9.7.2), and therefore not addressed by this specification.
+
+
+[RECOMMENDATION, id="REC/OWL/instance/identifier/httpuri"]
+======
+If an RDF resource has a unique identifier, the identifier should be a globally unique persistent HTTP URI.
+
+======
+
+This recommendation follows Best Practice #7 in the <<w3c_sdw_bp,Spatial Data on the Web Best Practices>>, but also takes into account additional <<ref_instance_cr_considerations_on_spatial_objects,considerations on spatial objects>>. 
+
+When designing an HTTP URI, take into account the recommendations from Annex H of the <<inspire_d25,INSPIRE Generic Conceptual Model>> as well as the ISA studies on <<isa_study_persistent_uris,persistent URIs>> and <<isa_study_rdf_and_pids_for_inspire,RDF & PIDs>>.
+
+
+[PERMISSION, id="PMS/OWL/instance/identifierForStructuredValue"]
+======
+When representing a structured value - also called _data type_ - as an RDF resource, a data provider may assign a unique identifier for the resource.
+======
+
+
+A structured value / data type does not have identity (see the UML Profile defined in clause 9.6.3 of the <<inspire_d25,INSPIRE Generic Conceptual Model>>), and therefore has only local scope. 
+
+In some concrete RDF syntaxes (for example <<w3c_rdfxml,RDF XML>>, <<w3c_rdf11_turtle,Turtle>>, and <<w3c_rdf11_ntriples,N-Triples>>), such a structured value can be encoded as an RDF blank node, i.e. an RDF resource without identifier. As explained in the <<w3c_rdf11_concepts,RDF 1.1 Concepts and Abstract Syntax>>, _"The blank node identifiers introduced by some concrete syntaxes have only local scope and are purely an artifact of the serialization."_
+
+When representing a structured value as an RDF resource, a data provider therefore has a choice between creating an identifier for the structured value, and representing it as a blank node.
+
+
+
+[[ref_instance_cr_considerations_on_spatial_objects]]
+== Considerations on spatial objects
+
+According to the definition of the <<inspire_directive>>, a spatial object is an _abstract representation of a real-world phenomenon related to a specific location or geographical area_.
+
+Most attributes and roles of a spatial object represent properties of the real-world phenomenon. It is common practice to model both properties that describe the real-world phenomenon and properties that describe the spatial object document, i.e. which are spatial object metadata, as spatial object properties.
+
+In INSPIRE, most properties are properties that describe the real-world phenomenon. However, there are exceptions:
+
+* Properties that represent life-cycle information (in particular, the beginLifespanVersion and endLifespanVersion attributes) are marked with the stereotype \<<lifeCycleInfo>>.
+* Properties that have a value type from ISO 19115 are often feature metadata. However, this is not always the case, in particular for CI types. An example is ProtectedSite.legalFoundationDocument with value type CI_Citation.
+* There are also some properties that require a closer review to identify them as metadata. Examples are CadastralZoning.estimatedAccuracy with value type Length or CadastralZoning.originalMapScaleDenominator with value type Integer. These properties are not properties of the real-world phenomenon, but of the spatial object.
+
+It is important in linked data and the semantic web to be clear about the subject of a property. It might therefore be tempting to use two subjects for the properties of a spatial object: one subject for all properties providing information about the real-world phenomenon and one subject for all properties that are about the spatial object itself (like life-cycle information) or that provide metadata. Such a separation of spatial object data is NOT recommended, because there is no actual benefit in doing so.
+
+From the perspective of RDF vocabularies there is no distinction between the two types of properties. In RDF, a property is a relationship between a subject resource and an object resource. _"Anything can be a resource, including physical things, documents, abstract concepts, [...]"_ <<w3c_rdf11_concepts>> The semantic of a spatial object property has to provide information whether the property represents metadata or actual data that describes the real-world phenomenon. This condition must be fulfilled, otherwise the model would be ambiguous. If the condition is fulfilled, then assigning spatial object properties to two different subjects, just to identify data about the real-world phenomenon and metadata, is not necessary.
+
+Another argument that has been made for separating data about the real-world phenomenon from metadata is that such a separation would facilitate gaining additional knowledge, i.e. finding more information, about the same real-world phenomenon. This would be achieved through the ability to assert equality between two resources which, in this case, represent the same real-world phenomenon.
+
+Before we discuss the topic of equality in more detail, we need to consider that multiple communities can define RDF/OWL classes to abstract the same real-world phenomenon, but in their particular "worlds" (their "universe of discourse"). Typically, these abstractions differ. The sets of properties used to describe the phenomenon can be different. If the same properties are used, then their values can still be different. For example, the geometry of a building can be represented as a solid, a polygon, or a point. The height of the building can be given in different formats ("10m", "100ft", "100", "small", "Code_T"). As we can see, the information provided for a real-world phenomenon depends on how a community abstracts this phenomenon.
+
+Coming back to the topic of equality: With pure RDF semantics, properties with the same subject belong to the same resource. If two communities used the same identifier for their abstractions of real-world phenomena, then these abstractions would be the same resource. Consequently, the information captured by both communities about the phenomenon would be available for that resource. 
+
+On first glance, this sounds useful. However, this approach can cause problems for users that want to gain new knowledge about a resource. Whenever two representations of the same resource share the same properties (e.g. "geometry" or "creationDate"), but with different values (e.g. a polygon vs a point, "1954-04-28" vs "1954-05-02"), then the user must decide what to do with this information. Should information be ignored (e.g. use the polygon instead of the point), or does it need to be processed to derive new information (e.g. computing the mean of two creation dates)? This problem will get bigger if more resources are "equal". 
+
+This problem is a general one. It can occur whenever two resources are equal. Equality can also be asserted, usually using the property owl:sameAs. Communities often do not use shared identifiers for their resources. In these situations, owl:sameAs predicates can be used to assert equality between two resources. That different identifiers are used for resources that represent the same real-world phenomenon is common, and is independent of a separation between resources with properties that only provide information about the real-world phenomenon and resources with properties that provide metadata.
+
+As we can see, gaining new knowledge from linked data is a hard problem. It is not solved by simply establishing equality (by using the same resource identifier, or by using owl:sameAs). In fact, abstractions of real-world phenomena created by different communities can rarely considered to be equal / the same. The abstractions will very likely be different, to a greater or lesser extent.
+
+How can INSPIRE RDF data support referencing the real-world phenomena that are abstracted, without requiring resource equality? The link between an INSPIRE resource and one or more real-world phenomena can be established with a property that does not imply resource equality. Unfortunately, the semantic web standards do not define a property with these semantics.
+
+We can conclude that:
+
+* A separation of an INSPIRE spatial object into two resources, one with the properties that exclusively describe the real-world phenomenon that is being abstracted by the spatial object and one with the other properties, creates no actual benefit.  
+* Full equality between two resources often does not exist. Care should be taken when assigning equality.
+
+
+[CAUTION]
+=======
+Relevant issues:
+
+* https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/22[Real-world phenomenon vs feature document as subject of a property]
+* https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/23[Relationship between real-world phenomenon and feature document]
+* https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/24[Relationship between resources identifying the same real-world phenomenon]
+* https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/25[INSPIRE spatial object type classification]
+
+=======
+
+
+
+[[ref_instance_geometry]]
+== Encoding geometry
+
+
+[REQUIREMENT, id="REQ/OWL/instance/geometry"]
+======
+An instance of an ISO 19107 geometry shall be serialized as a <<ogc_geosparql,GeoSPARQL>> geometry as follows:
+
+* If the geometry is compliant to a Simple Feature geometry, it shall be serialized using the WKT Serialization defined by GeoSPARQL.
+* Otherwise, it shall be serialized using the GML Serialization defined by GeoSPARQL.
+
+======
+
+Properties from INSPIRE application schemas that have a value type from ISO 19107 are aligned with GeoSPARQL and the ISA Programme Location Core Vocabulary (LOCN) - see the <<ref_cr_prop_alignments,property alignment requirements in the schema conversion rules chapter>>. Both specifications (GeoSPARQL and LOCN) support WKT and GML for serializing a geometry. 
+
+The requirement establishes WKT and GML as the main formats for encoding geometry information in INSPIRE RDF data. At the same time, however, the requirement does not preclude addition of predicates from GeoSPARQL (gsp:hasGeometry) and LOCN (locn:geometry) with other geometry serializations. In summary, the requirement establishes a suitable level of interoperability while offering enough flexibility to encode geometry in other formats.
+
+
+
+[[ref_instance_metadata]]
+== Encoding metadata
+
+According to the <<geodcat_ap,GeoDCAT-AP>> specification, _"GeoDCAT-AP provides an RDF syntax binding for the union of metadata elements of the core profile of ISO 19115:2003 and those defined in the framework of the INSPIRE Directive"_. It is therefore well-suited to implement MD_Metadata in the context of INSPIRE.
+
+[REQUIREMENT, id="REQ/OWL/instance/metadata/geodcatap"]
+======
+An instance of MD_Metadata, implemented as dcat:Dataset, shall be compliant to <<geodcat_ap,GeoDCAT-AP>>.
+
+======
+
+[REQUIREMENT, id="REQ/OWL/instance/metadata/CI_Date"]
+======
+An instance of CI_Date shall be represented by one of the DCMI Metadata Terms properties _created_, _modified_, and _issued_:
+
+* dct:created - if the date type of the CI_Date is 'creation'
+* dct:issued - if the date type of the CI_Date is 'publication'
+* dct:modified - if the date type of the CI_Date is 'revision'
+
+======
+
+
+
+== Value collections
+
+
+[REQUIREMENT, id="REQ/OWL/instance/valuecollections"]
+======
+Multiple values for a single property shall be encoded as multiple property assertions, rather than using an RDF collection (rdf:List) or RDF containers (rdf:Bag, rdf:Seq, rdf:Alt). 
+
+======
+
+These RDF constructs do not add particular value, since the INSPIRE application schemas do not make use of ordering and uniqueness indicators for properties with multiplicity greater than one.
+
+// This also helps reduce the complexity of SPARQL queries and is more compatible with OWL tools.

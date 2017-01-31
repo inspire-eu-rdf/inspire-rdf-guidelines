@@ -1,0 +1,25 @@
+= Normative references
+
+[[geodcat_ap]]GeoDCAT-AP: A geospatial extension for the DCAT application profile for data portals in Europe v1.0.1, https://joinup.ec.europa.eu/node/154143/
+
+[[inspire_d25]]INSPIRE D2.5 v3.4, Generic Conceptual Model
+
+[[inspire_d27]]INSPIRE D2.7 v3.3, Guidelines for the encoding of spatial data
+
+[[w3c_locn]]ISA Programme Location Core Vocabulary, https://www.w3.org/ns/locn
+
+[[iso_19118]]ISO 19118:2011, Geographic information – Encoding
+
+[[ogc_gml_33]]OGC Geography Markup Language (GML) - Extended schemas and encoding rules, OGC document number 10-129r1
+
+[[ogc_geosparql]]OGC GeoSPARQL - A Geographic Query Language for RDF Data, OGC document number 11-052r4
+
+[[UML_212]]OMG Unified Modeling Language (OMG UML), Superstructure, V2.1.2
+
+[[owl2]] OWL 2 Web Ontology Language, Structural Specification and Functional-Style Syntax (Second Edition), W3C Recommendation 11 December 2012, http://www.w3.org/TR/owl2-syntax/
+
+[[ogc_sf]]OpenGIS Implementation Standard for Geographic information - Simple feature access - Part 1: Common architecture, OGC document number 06-103r4, http://portal.opengeospatial.org/files/?artifact_id=25355
+
+[[w3c_rdf11_concepts]] RDF 1.1 Concepts and Abstract Syntax, http://www.w3.org/TR/rdf11-concepts/
+
+[[w3c_rdfschema11]]W3C RDF Schema 1.1, https://www.w3.org/TR/rdf-schema/

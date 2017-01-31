@@ -1,0 +1,32 @@
+[[overview]]
+= Overview
+
+The http://inspire.ec.europa.eu/[INSPIRE initiative] aims at improving the sharing of spatial data and services between public authorities in Europe and in particular between the Member States and the European Institutions. INSPIRE addresses the interoperability of spatial data sets and services for the exchange of data related to one of the 34 spatial data themes defined in the INSPIRE Directive. It does so through the creation of http://inspire.ec.europa.eu/index.cfm/pageid/2[application schemas (using UML) and geospatial encodings mechanisms (using GML, plus GeoTIFF and other formats for selected data themes)]. Through its data specifications, INSPIRE provides a common means to describe the spatial data within the scope of all the data themes outlined in the annexes of the Directive. The GML encoding that INSPIRE uses is an open standard intended for data exchange of spatial data on the Web. It is mainly supported by geospatial technologies.
+
+At the same time, e-government applications and tools start to use the Linked Data paradigm, based on Semantic Web languages and technologies, such as the Resource Description Framework (RDF). If INSPIRE data was available as Linked Data, these e-government applications and tools could easily link to it. INSPIRE Linked Data has potential to unlock new applications and services, not only for e-government, but also other communities following the linked data paradigm. 
+
+Moreover, the Core Location Vocabulary specified by ISA as part of the https://joinup.ec.europa.eu/asset/core_vocabularies/description[e-Government Core Vocabularies] is an example of where INSPIRE data (and models) can be reused in e-government in RDF, meaning that investments made in sharing data for INSPIRE can become part of key processes in online government services. This concept can in principle be extended to offer all such INSPIRE spatial data objects as RDF, thus creating a ‘base geography’ of INSPIRE data that other data (from any sector) can be linked to.
+
+https://ies-svn.jrc.ec.europa.eu/projects/rdf-pids/wiki/ARE3NA_RDF_+_PIDs_study[Previous work] has brought together expertise in different countries to create a draft methodology for creating the INSPIRE RDF vocabularies, explored governance issues of Persistent Identifiers (PIDs) such as URIs and has explored some of the tools that can be used to create such data. 
+
+The guidelines described in this document build on this work and include input from pilots to test draft INSPIRE RDF vocabularies and PID concepts as well as input from the community on open issues through an https://github.com/inspire-eu-rdf/inspire-rdf-guidelines[open forum].
+
+While the methodology to publish INSPIRE data as GML together with the corresponding XML schemas is well-defined, a methodology for the publication of INSPIRE data as linked data so far does not exist. This document aims at filling this gap. Consistent with the requirements for spatial data sets in INSPIRE, this document covers both
+
+* the creation of RDF vocabularies representing the INSPIRE application schemas and 
+* the transformation of INSPIRE data into RDF.
+
+To conform to Article 7 of the INSPIRE implementing rule (regulation 1089/2010), this document specifies an encoding rule conforming to ISO EN 19118:2011. An encoding rule describes conversion rules for transforming data from an input data structure to an output data structure. Schemas have to be described for both the input and output data structure. In this case the input schemas, the INSPIRE application schemas, use the UML profile of the INSPIRE Generic Conceptual Model, the output schemas use RDFS/OWL/SKOS. The schema for the input data structure is called an application schema.
+
+An encoding rule specifies the following aspects:
+
+* General encoding requirements (clause 6)
+* the input data structure (clause 7)
+* the output data structure (the "exchange format", clause 8)
+* the conversion rules, called the mapping, for converting data in the instance model to the exchange format
+ ** the schema conversion rules for mapping between the INSPIRE application schemas in UML to RDFS (clause 9)
+ ** the instance conversion rules for representing INSPIRE data in RDF as far as this is not described by the schema conversion rules (clause 10)
+
+Sufficient examples to illustrate the rules and the encoded data are provided.
+
+NOTE: As mentioned before, the guidelines include input from pilots to test draft INSPIRE RDF vocabularies and PID concepts as well as input from the community on open issues. The input can lead to addition and revision of examples.

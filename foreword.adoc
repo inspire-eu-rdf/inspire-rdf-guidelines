@@ -1,0 +1,33 @@
+[[foreword]]
+= Foreword
+
+The challenges regarding the lack of availability, quality, organisation, accessibility, and sharing of spatial information are common to a large number of policies and activities and are experienced across the various levels of public authority in Europe. In order to solve these problems it is necessary to take measures of coordination between the users and providers of spatial information. The Directive 2007/2/EC of the European Parliament and of the Council adopted on 14 March 2007 aims at establishing an Infrastructure for Spatial Information in the European Community (INSPIRE) for environmental policies, or policies and activities that have an impact on the environment.
+
+INSPIRE is based on the infrastructures for spatial information that are created and maintained by the Member States. To support the establishment of a European infrastructure, Implementing Rules addressing the following components of the infrastructure have been specified: metadata, interoperability of spatial data sets (as described in Annexes I, II, III of the Directive) and spatial data services, network services, data and service sharing, and monitoring and reporting procedures.
+
+INSPIRE does not require collection of new data. However, Member States have to make their data available according to the Implementing Rules within two years of the adoption of the corresponding Implementing Rules for newly collected and extensively restructured data and within 5 years for other data in electronic format still in use.
+
+Interoperability in INSPIRE means the possibility to combine spatial data and services from different sources across the European Community in a consistent way without involving specific efforts of humans or machines. 'Interoperability' is understood as providing access to spatial data sets through network services, typically via the Internet. Interoperability may be achieved by either changing (harmonising) and storing existing data sets or transforming them via services for publication in the INSPIRE infrastructure. It is expected that users will spend less time and efforts on understanding and integrating data when they build their applications based on data delivered in accordance with INSPIRE.
+
+In order to benefit from the endeavours of international standardisation bodies and organisations established under international law their standards and technical means have been utilised and referenced, whenever possible.
+
+An open and participatory approach was used during the development of the data specifications on Annex I, II and III data themes and the preparation of the Implementing Rule on Interoperability of Spatial Data Sets and Services.
+
+The INSPIRE data specifications are built on a development framework. The following two documents from the framework are particularly important for this document:
+
+* The Generic Conceptual Model defines the elements necessary for interoperability and data harmonisation including cross-theme issues. Among other aspects it specifies the UML profile used to specify the INSPIRE application schemas.
+* The Guidelines for the Encoding of Spatial Data defines how geographic information can be encoded to enable transfer processes between the systems of the data providers in the Member States. Even though it does not specify a mandatory encoding rule it sets GML (ISO 19136) as the default encoding for INSPIRE, which has been used by most of the data specifications.
+
+This document specifies an additional encoding rule supporting the consistent representation of spatial data sets that meet the interoperability requirements using RDF. It builds on https://ies-svn.jrc.ec.europa.eu/projects/rdf-pids/wiki/ARE3NA_RDF_+_PIDs_study[previous work] on this subject. All issues are raised and discussed in an https://github.com/inspire-eu-rdf/inspire-rdf-guidelines[open forum]. 
+
+This is work-in-progress and is being prepared for the ISA Programme by PwC EU Services and interactive instruments GmbH as part of ISA Action 1.17, A Reusable INSPIRE Reference Platform (ARE3NA).
+
+*Disclaimer*
+
+The views expressed in this report are purely those of the authors and may not, in any circumstances, be interpreted as stating an official position of the European Commission.
+
+The European Commission does not guarantee the accuracy of the information included in this study, nor does it accept any responsibility for any use thereof.
+
+Reference herein to any specific products, specifications, process, or service by trade name, trademark, manufacturer, or otherwise, does not necessarily constitute or imply its endorsement, recommendation, or favouring by the European Commission.
+
+All care has been taken by the author to ensure that s/he has obtained, where necessary, permission to use any parts of manuscripts including illustrations, maps, and graphs, on which intellectual property rights already exist from the titular holder(s) of such rights or from her/his or their legal representative.

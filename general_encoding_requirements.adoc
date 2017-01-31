@@ -1,0 +1,53 @@
+[[general_encoding_requirements]]
+= General encoding requirements
+
+
+
+== Application schema and schema language
+
+As specified by the INSPIRE Generic Conceptual Model (GCM) <<inspire_d25>>, the schema language for modelling INSPIRE conceptual schemas is UML.
+
+The UML Profile of INSPIRE application schemas is defined in clause 9.6.3 of the GCM. The RDF encoding rule does not require any specific extension of this UML Profile.
+
+
+
+== Character encoding
+
+The format used to serialize INSPIRE RDF data sets the requirements for the character encoding. The <<output_data_structure,output data structure>> section provides further details about format requirements.
+
+
+
+== Exchange metadata
+
+Exchange metadata is metadata about the encoded data structure. It can describe the originator of the dataset, refer to metadata information about the dataset, refer to the application schema and provide information about the encoding rule applied.
+
+No specific metadata is defined to describe the exchange of INSPIRE RDF data. The data itself can contain metadata. In that case, the application schema defines the types and properties that contain metadata.
+
+[NOTE]
+======
+Consider the publication of metadata in one or more formats like schema.org, microdata, DCAT, and (Geo)DCAT-AP. 
+
+Choose the metadata format based upon the formats that are supported by the search engines with which you intend to make your data searchable. Annotations in HTML pages using the schema.org vocabulary is metadata that web crawlers are using. DCAT (and extensions like GeoDCAT-AP) are currently mostly used by e-government data portals.
+
+For further information, see https://www.w3.org/TR/2017/NOTE-sdw-bp-20170105/#indexable-by-search-engines[Best Practice 4: Make your spatial data indexable by search engines] in the <<w3c_sdw_bp,Spatial Data on the Web Best Practices>>.
+======
+
+
+
+== Transfer unit
+
+=== Granularity and structure
+
+A transfer unit is a set of objects (a dataset or a subset of a dataset), each of which contains a set of properties.
+
+
+
+=== Object identification
+
+[REQUIREMENT, id="REQ/OWL/ObjectIdentification]
+======
+Each object contained in the transfer unit shall have a unique identifier.
+
+======
+
+NOTE: Data types are not categorised as objects in the input data structure.

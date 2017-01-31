@@ -1,0 +1,122 @@
+= Terms and abbreviations
+
+#TBD#
+
+[[ref_terms]]
+== Terms
+
+application schema:: conceptual schema for data required by one or more applications <<iso_19101>>
+
+conversion rule:: rule for converting instances in the input data structure to instances in the output data structure <<iso_19118>> 
+
+data interchange:: delivery, receipt and interpretation of data <<iso_19118>>  
+ 
+data transfer:: movement of data from one point to another over a medium <<iso_19118>> +
+ +
+NOTE  Transfer of information implies transfer of data. 
+ 
+encoding:: conversion of data into a series of codes <<iso_19118>>  
+ 
+encoding rule:: identifiable collection of conversion rules that define the encoding for a particular data structure <<iso_19118>> +
+ + 
+ NOTE  An encoding rule specifies the types of data to be converted as well as the syntax, structure 
+and codes used in the resulting data structure. 
+
+transfer format:: structured representation of data in a file for transfer between systems + 
+ +
+ NOTE  Typically, a machine readable schema will document the structure of the data in the transfer 
+file. +
+ +
+ EXAMPLE  GML <<iso_19136>> encodes the application schema in XML Schema. 
+
+simple feature:: feature with all geometric attributes described piecewise by straight line or planar interpolation between sets of points <<ogc_sf>>
+
+spatial data:: data with a direct or indirect reference to a specific location or geographic area <<inspire_directive>>  
+ 
+spatial data set:: identifiable collection of spatial data <<inspire_directive>>  
+
+spatial object:: abstract representation of a real-world phenomenon related to a specific location or geographical area <<inspire_directive>> 
+ 
+NOTE: It should be noted that the term has a different meaning in the ISO 19100 series. It is also synonymous with "(geographic) feature" as used in the ISO 19100 series. 
+ 
+spatial object type:: classification of spatial objects <<inspire_d25>>
+
+NOTE: In the conceptual schema language UML a spatial object type will be described by a class with stereotype <<featureType>>.
+
+transfer protocol:: common set of rules for defining interactions between distributed systems <<iso_19118>>
+
+
+== Abbreviations
+
+[frame="none",grid="none",cols="<15,<85"]
+|===
+| CEN | European Committee for Standardization
+| GCM | INSPIRE Generic Conceptual Model
+| IETF | Internet Engineering Task Force
+| INSPIRE | INfrastructure for SPatial InfoRmation in Europe
+| IR | Implementing Rule 
+| ISO | International Organisation for Standardisation 
+| LOCN | ISA Programme Location Core Vocabulary
+| OGC | Open Geospatial Consortium 
+| SDI | Spatial Data Infrastructure 
+| SDIC | Spatial Data Interest Community 
+| TR | Technical Report 
+| TS | Technical Specification 
+| UML | Unified Modelling Language 
+| URI | Uniform Resource Identifier 
+| URN | Uniform Resource Name 
+| UTF | Unicode Transformation Format 
+| XML | eXtensible Markup Language 
+|===
+
+
+== Verbal forms for the expression of provisions
+In accordance with the ISO rules for drafting, the following verbal forms shall be interpreted in the given way: 
+
+* "shall" / "shall not": a requirement, mandatory for every data specification 
+* "should" / "should not": a recommendation, but an alternative approach may be chosen for a specific case if there are reasons to do so 
+* "may" / "need not": a permission
+
+To make it easier to identify the mandatory requirements, the recommendations, and the permissions for INSPIRE data specifications in the text, they are highlighted and have an identifier.
+
+[REQUIREMENT, id="REQ/OWL/A/B/C"]
+======
+Requirements are shown using this style.
+======
+
+[RECOMMENDATION, id="REC/OWL/X/Y/Z"]
+======
+Recommendations are shown using this style.
+======
+
+[PERMISSION, id="PMS/OWL/X/Y/Z"]
+======
+Permissions are shown using this style.
+======
+
+Specific notes are also highlighted. They do not have normative character.
+
+NOTE: This is a note.
+
+
+
+== Namespace conventions
+
+This standard uses a number of namespace prefixes throughout; they are listed in the following table.
+
+[cols="<15,<85",width="90%",options="header"]
+|===
+| Prefix | Namespace
+| dcat | http://www.w3.org/ns/dcat#
+| dct | http://purl.org/dc/terms/
+| gsp | http://www.opengis.net/ont/geosparql#
+| gmlowl | http://www.opengis.net/ont/gml#
+| iso19150-2 | http://def.isotc211.org/iso19150-2/2012/base#
+| locn | https://www.w3.org/ns/locn#
+| owl | http://www.w3.org/2002/07/owl#
+| rdf | http://www.w3.org/1999/02/22-rdf-syntax-ns#
+| rdfs | http://www.w3.org/2000/01/rdf-schema#
+| sfowl | http://www.opengis.net/ont/sf#
+| skos | http://www.w3.org/2004/02/skos/core#
+| xsd | http://www.w3.org/2001/XMLSchema#
+|===

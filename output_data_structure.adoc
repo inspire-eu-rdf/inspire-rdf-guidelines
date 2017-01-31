@@ -1,0 +1,28 @@
+[[output_data_structure]]
+= Output data structure
+
+This encoding rule is based on <<w3c_rdf11_concepts,RDF 1.1 Concepts and Abstract Syntax>>. 
+
+[quote, https://www.w3.org/TR/rdf11-primer/#section-Introduction]
+______
+The Resource Description Framework (RDF) is a framework for expressing information about resources. Resources can be anything, including documents, people, physical objects, and abstract concepts.
+
+RDF is intended for situations in which information on the Web needs to be processed by applications, rather than being only displayed to people. RDF provides a common framework for expressing this information so it can be exchanged between applications without loss of meaning. Since it is a common framework, application designers can leverage the availability of common RDF parsers and processing tools. The ability to exchange information between different applications means that the information may be made available to applications other than those for which it was originally created.
+
+In particular RDF can be used to publish and interlink data on the Web. For example, retrieving http://www.example.org/bob#me could provide data about Bob, including the fact that he knows Alice, as identified by her IRI (an IRI is an "International Resource Identifier" [...]). Retrieving Alice's IRI could then provide more data about her, including links to other datasets for her friends, interests, etc. A person or an automated process can then follow such links and aggregate data about these various things. Such uses of RDF are often qualified as Linked Data. 
+______
+
+<<w3c_rdf11_concepts,RDF 1.1 Concepts and Abstract Syntax>> defines a data model. It does not define a specific format to encode RDF data. A number of RDF formats exist, serving different purposes.
+
+[RECOMMENDATION, id="REC/OWL/encoding/turtle"]
+======
+INSPIRE RDF data should be encoded in <<w3c_rdf11_turtle,Turtle>>.
+
+======
+
+[PERMISSION, id="PMS/OWL/encoding/other"]
+======
+INSPIRE RDF data may be encoded in other RDF formats, such as <<w3c_rdf11_ntriples,N-Triples>> and <<w3c_rdfxml,XML>>.
+======
+
+The schema for the output data structure that governs the structure of the exchange format is a combination of <<w3c_rdfschema11,RDF Schema>> and <<owl2,OWL>>.

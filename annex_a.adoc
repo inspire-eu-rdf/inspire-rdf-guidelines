@@ -1,0 +1,4 @@
+[[annex_a]]
+= Annex A - Vocabulary examples (informative)
+
+Vocabularies created based upon the guidelines from this document are available at https://github.com/inspire-eu-rdf/inspire-rdf-vocabularies.

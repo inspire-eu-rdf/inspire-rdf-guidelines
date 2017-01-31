@@ -1,0 +1,91 @@
+:doctype: book
+
+:stylesdir: stylesheets/
+:stylesheet: inspire.css
+:linkcss:
+
+:toc: macro
+:toc-title: Table of contents
+:toclevels: 4
+:toc-position: left
+:appendix-caption: Annex
+
+:icons: font
+
+:source-highlighter: pygments
+:pygments-style: autumn
+:pygments-linenums-mode: inline
+
+
+
+
+[[EC_logo]]
+image::images/EC%20logo.jpeg["European Commission Logo",150,align="center"]
+
+[frame="none",grid="none",cols="^25,<.^75"]
+|===
+|image:images/INSPIRE%20logo.png["INSPIRE Logo",150] | [inspire_headline]#INSPIRE +
+Infrastructure for Spatial Information in Europe#
+|===
+
+
+WARNING: WORK IN PROGRESS
+
+
+= Guidelines for the RDF encoding of spatial data
+[frame="topbot",grid="none"]
+|===
+| *Title* | Guidelines for the RDF encoding of spatial data
+| *Status* | Draft (work in progress)
+| *Creator* | ARE3NA project "INSPIRE Re3ference Platform Phase 2"
+| *Date* | 2017-01-31
+| *Subject* | INSPIRE encoding rules for representing spatial data as RDF
+| *Publisher* | ARE3NA project "INSPIRE Re3ference Platform Phase 2"
+| *Type* | Text
+| *Description* | This document specifies an experimental encoding rule for representing spatial data sets in INSPIRE as RDF. The use of RDF is optional and does not supersede or replace the requirements regarding encoding specified in Clause 9 of the Data Specifications. This optional encoding is intended to support the e-government and open data community in Europe, which is increasingly looking at RDF to represent data.
+| *Format* | HyperText Markup Language (HTML)
+| *Licence* | https://creativecommons.org/licenses/by/4.0/[Creative Commons Attribution (cc-by) 4.0]
+| *Identifier* | http://inspire-eu-rdf.github.io/inspire-rdf-guidelines
+| *Language* | EN
+|===
+
+<<<
+
+toc::[]
+
+<<<
+
+:leveloffset: +1
+
+include::foreword.adoc[]
+
+include::introduction.adoc[]
+
+:numbered:
+include::scope.adoc[]
+
+include::conformance.adoc[]
+
+include::normative_references.adoc[]
+
+include::terms_and_abbreviations.adoc[]
+
+include::overview.adoc[]
+
+include::general_encoding_requirements.adoc[]
+
+include::input_data_structure.adoc[]
+
+include::output_data_structure.adoc[]
+
+include::schema_conversion_rules.adoc[]
+
+include::instance_conversion_rules.adoc[]
+
+:numbered!:
+
+include::annex_a.adoc[]
+
+include::bibliography.adoc[]
+
+:leveloffset: -1
