@@ -29,7 +29,7 @@ Consider the publication of metadata in one or more formats like schema.org, mic
 
 Choose the metadata format based upon the formats that are supported by the search engines with which you intend to make your data searchable. Annotations in HTML pages using the schema.org vocabulary is metadata that web crawlers are using. DCAT (and extensions like GeoDCAT-AP) are currently mostly used by e-government data portals.
 
-For further information, see https://www.w3.org/TR/2017/NOTE-sdw-bp-20170105/#indexable-by-search-engines[Best Practice 4: Make your spatial data indexable by search engines] in the <<w3c_sdw_bp,Spatial Data on the Web Best Practices>>.
+For further information, see https://www.w3.org/TR/2017/NOTE-sdw-bp-20170511/#bp-indexable[Best Practice 2: Make your spatial data indexable by search engines] in the <<w3c_sdw_bp,Spatial Data on the Web Best Practices>>.
 ======
 
 

@@ -1,14 +1,19 @@
 [[ref_instance_cr]]
 = Instance conversion rules
 
-#TBD: What else needs to be documented in this chapter? An example instance would certainly be useful. Creating an example of an INSPIRE spatial object encoded in RDF has been postponed until this document is sufficiently stable.#
+[CAUTION]
+=======
+Relevant issue(s):
+
+* https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/38[Example of spatial object encoded using INSPIRE RDF vocabularies]
+
+=======
 
 
-
+[[ref_instance_cr_input_to_output]]
 == From input to output data structure
 
 An object from the input structure is converted to an RDF resource. Object properties are represented by RDF resource properties. A dataset is represented by an RDF graph.
-
 
 
 [[ref_instance_cr_resource_identifier]]
@@ -77,6 +82,8 @@ This problem is a general one. It can occur whenever two resources are equal. Eq
 
 As we can see, gaining new knowledge from linked data is a hard problem. It is not solved by simply establishing equality (by using the same resource identifier, or by using owl:sameAs). In fact, abstractions of real-world phenomena created by different communities can rarely considered to be equal / the same. The abstractions will very likely be different, to a greater or lesser extent.
 
+NOTE: https://www.w3.org/TR/sdw-bp/#bp-identifiers[Best practice No 1 of the The Spatial Data on the Web Best Practices] also recommends caution when using owl:sameAs: "_Care must always be taken when using owl:sameAs to determine that [the] two URIs actually refer to the same resource, rather than two resources that are similar. Warning: don't say it if you're not sure it's true!_" 
+
 How can INSPIRE RDF data support referencing the real-world phenomena that are abstracted, without requiring resource equality? The link between an INSPIRE resource and one or more real-world phenomena can be established with a property that does not imply resource equality. Unfortunately, the semantic web standards do not define a property with these semantics.
 
 We can conclude that:
@@ -87,18 +94,17 @@ We can conclude that:
 
 [CAUTION]
 =======
-Relevant issues:
+Relevant issue(s):
 
 * https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/22[Real-world phenomenon vs feature document as subject of a property]
 * https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/23[Relationship between real-world phenomenon and feature document]
 * https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/24[Relationship between resources identifying the same real-world phenomenon]
-* https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/25[INSPIRE spatial object type classification]
 
 =======
 
 
 
-[[ref_instance_geometry]]
+[[ref_instance_cr_geometry]]
 == Encoding geometry
 
 
@@ -111,13 +117,13 @@ An instance of an ISO 19107 geometry shall be serialized as a <<ogc_geosparql,Ge
 
 ======
 
-Properties from INSPIRE application schemas that have a value type from ISO 19107 are aligned with GeoSPARQL and the ISA Programme Location Core Vocabulary (LOCN) - see the <<ref_cr_prop_alignments,property alignment requirements in the schema conversion rules chapter>>. Both specifications (GeoSPARQL and LOCN) support WKT and GML for serializing a geometry. 
+Properties from INSPIRE application schemas that have a value type from ISO 19107 are aligned with GeoSPARQL and the ISA Programme Location Core Vocabulary (LOCN) - see the <<ref_cr_prop_alignment,property alignment requirements in the schema conversion rules chapter>>. Both specifications (GeoSPARQL and LOCN) support WKT and GML for serializing a geometry. 
 
 The requirement establishes WKT and GML as the main formats for encoding geometry information in INSPIRE RDF data. At the same time, however, the requirement does not preclude addition of predicates from GeoSPARQL (gsp:hasGeometry) and LOCN (locn:geometry) with other geometry serializations. In summary, the requirement establishes a suitable level of interoperability while offering enough flexibility to encode geometry in other formats.
 
 
 
-[[ref_instance_metadata]]
+[[ref_instance_cr_metadata]]
 == Encoding metadata
 
 According to the <<geodcat_ap,GeoDCAT-AP>> specification, _"GeoDCAT-AP provides an RDF syntax binding for the union of metadata elements of the core profile of ISO 19115:2003 and those defined in the framework of the INSPIRE Directive"_. It is therefore well-suited to implement MD_Metadata in the context of INSPIRE.
@@ -139,7 +145,16 @@ An instance of CI_Date shall be represented by one of the DCMI Metadata Terms pr
 ======
 
 
+[CAUTION]
+=======
+Relevant issue(s):
 
+* https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/32[Metadata on resource level]
+
+=======
+
+
+[[ref_instance_cr_value_collections]]
 == Value collections
 
 
@@ -152,3 +167,11 @@ Multiple values for a single property shall be encoded as multiple property asse
 These RDF constructs do not add particular value, since the INSPIRE application schemas do not make use of ordering and uniqueness indicators for properties with multiplicity greater than one.
 
 // This also helps reduce the complexity of SPARQL queries and is more compatible with OWL tools.
+
+
+[[ref_instance_cr_extensions]]
+== Extensions
+
+A publisher may have more information about a spatial object than what is covered by the INSPIRE schemas. When encoding the spatial object as an RDF resource, the information that is covered by the INSPIRE schemas should be encoded as defined by this document. The additional information can be added to that resource in any way the publisher likes. 
+
+This extensibility is one of the benefits of RDF: a resource can be of any type, also multiple types - with according information expressed via RDF statements where the resource is the subject.

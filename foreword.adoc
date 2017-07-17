@@ -20,7 +20,7 @@ The INSPIRE data specifications are built on a development framework. The follow
 
 This document specifies an additional encoding rule supporting the consistent representation of spatial data sets that meet the interoperability requirements using RDF. It builds on https://ies-svn.jrc.ec.europa.eu/projects/rdf-pids/wiki/ARE3NA_RDF_+_PIDs_study[previous work] on this subject. All issues are raised and discussed in an https://github.com/inspire-eu-rdf/inspire-rdf-guidelines[open forum]. 
 
-This is work-in-progress and is being prepared for the ISA Programme by PwC EU Services and interactive instruments GmbH as part of ISA Action 1.17, A Reusable INSPIRE Reference Platform (ARE3NA).
+The document has been prepared for the ISA Programme by PwC EU Services and interactive instruments GmbH as part of ISA Action 1.17, A Reusable INSPIRE Reference Platform (ARE3NA).
 
 *Disclaimer*
 

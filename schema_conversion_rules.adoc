@@ -83,7 +83,7 @@ No specific conversion rules are defined for the packages that belong to an appl
 ----------
 <http://inspire.ec.europa.eu/ont/cp>
         a                owl:Ontology ;
-        owl:imports      <http://def.isotc211.org/iso19150-2/2012/base> , <https://github.com/inspire-eu-rdf/inspire-rdf-vocabularies/blob/master/ad/ad.ttl> , <https://www.w3.org/ns/locn.ttl> , <http://www.w3.org/2004/02/skos/core> , <http://www.opengis.net/ont/geosparql> , <https://github.com/inspire-eu-rdf/inspire-rdf-vocabularies/blob/master/base/base.ttl> , <https://github.com/inspire-eu-rdf/inspire-rdf-vocabularies/blob/master/au/au.ttl> ;
+        owl:imports      <http://def.isotc211.org/iso19150/-2/2012/base> , <https://github.com/inspire-eu-rdf/inspire-rdf-vocabularies/blob/master/ad/ad.ttl> , <https://www.w3.org/ns/locn.ttl> , <http://www.w3.org/2004/02/skos/core> , <http://www.opengis.net/ont/geosparql> , <https://github.com/inspire-eu-rdf/inspire-rdf-vocabularies/blob/master/base/base.ttl> , <https://github.com/inspire-eu-rdf/inspire-rdf-vocabularies/blob/master/au/au.ttl> ;
         owl:versionIRI   "http://inspire.ec.europa.eu/ont/cp/4.0" ;
         owl:versionInfo  "4.0" ;
         skos:definition  "The application schema CadastralParcels contains the feature types CadastralParcel, CadastralBoundary and CadastralIndexSet."@en .
@@ -94,7 +94,7 @@ No specific conversion rules are defined for the packages that belong to an appl
 [source,xml,linenumbers]
 ----------
   <owl:Ontology rdf:about="http://inspire.ec.europa.eu/ont/cp">
-    <owl:imports rdf:resource="http://def.isotc211.org/iso19150-2/2012/base"/>
+    <owl:imports rdf:resource="http://def.isotc211.org/iso19150/-2/2012/base"/>
     <owl:imports rdf:resource="https://github.com/inspire-eu-rdf/inspire-rdf-vocabularies/blob/master/ad/ad.ttl"/>
     <owl:imports rdf:resource="https://www.w3.org/ns/locn.ttl"/>
     <skos:definition xml:lang="en">The application schema CadastralParcels contains the feature types CadastralParcel, CadastralBoundary and CadastralIndexSet.</skos:definition>
@@ -151,7 +151,6 @@ Hash URIs - instead of 'slash' URIs (i.e. using '/') - are used in INSPIRE ontol
 Relevant issue(s):
 
 * https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/26[URIs for INSPIRE - 303 URIs vs. hash URIs]
-* https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/3[URI Scheme for RDF namespaces – management aspects]
 
 =======
 
@@ -242,18 +241,29 @@ Whether or not a mapping is appropriate typically requires careful consideration
 
 The following subsections document known mappings. They can be extended in the future.
 
+[PERMISSION, id="REC/OWL/type/mapping/dataTypeAsSpatialObjectTypeRepresentation"]
+======
+A +<<dataType>>+ of the INSPIRE conceptual schemas, which is primarily used as a simplified view on an INSPIRE spatial object type, may, in the RDF encoding, either be mapped to or merged with that spatial object type.
+
+======
+
+When working with linked data, you should be able to directly link to a spatial object, rather than introducing an indirection by linking to a resource which merely provides a simplified view on the spatial object.
+
+.Mapping AddressRepresentation
+======
+The INSPIRE type 'AddressRepresentation' is mapped to the RDF/OWL representation of the INSPIRE type 'Address'. For further details, see <<ref_cr_mappings_inspireAddresses,here>>.
+
+======
+
 
 
 [CAUTION]
 =======
 Relevant issue(s):
 
-* https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/9[RDF types for base types from ISO 19103 - types that map directly to XML Schema types]
 * https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/10[RDF types for base types from ISO 19103 - measure types]
-* https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/11[RDF types for base types from ISO 19103 - ‘Any’ type]
 * https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/12[RDF types and properties for INSPIRE foundation schemas]
 * https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/16[Reuse of common Linked Data Vocabularies]
-* https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/17[Including information for mapping classes and properties to common definitions in the conceptual model]
 
 =======
 
@@ -282,18 +292,26 @@ Types from ISO 19103 shall be mapped to the RDFS/OWL class or datatype listed in
 | Number | xsd:double
 | Real | xsd:double
 | Any | rdfs:Class
-| Angle | #TBD#
-| Area | #TBD#
-| Distance | #TBD#
-| Length | #TBD#
-| Measure | #TBD#
-| Probability | #TBD#
-| Velocity | #TBD#
-| Volume | #TBD#
-| UnitOfMeasure | #TBD: rdfs:Class if no recommendation can be made#
+| Angle | base:Measure
+| Area | base:Measure
+| Distance | base:Measure
+| Length | base:Measure
+| Measure | base:Measure
+| Probability | base:Measure
+| Velocity | base:Measure
+| Volume | base:Measure
 |====================
 
 For all other types from ISO 19103 used in INSPIRE schemas, suitable mappings need to be found on a case-by-case basis. 
+
+[NOTE]
+======
+The https://www.w3.org/TR/sdw-bp/#c-unitofmeasure[Spatial Data on the Web Best Practices document states]:
+
+* "_There is no evidence of best practice here — nor is there consensus on which data model is best for describing units of measure._" 
+* "_The W3C Web of Things Interest Group has created a task force to address the challenges of semantic interoperability relating to units of measure, which may lead to emergence of best practices that can be adopted by spatial data publishers._"
+
+======
 
 
 
@@ -364,7 +382,7 @@ Types from ISO 19108 shall be mapped to the RDFS/OWL class or datatype listed in
 [width="90%",options="header"]
 |====================
 | ISO 19108 Type | RDFS/OWL Class or Datatype
-| TM_Position | #TBD:# http://www.w3.org/2006/time#Instant - and for simple cases xsd:date and xsd:dateTime?
+| TM_Position | time:TemporalPosition
 |====================
 
 For all other types from ISO 19108 used in INSPIRE schemas, suitable mappings need to be found on a case-by-case basis. 
@@ -392,7 +410,6 @@ Types from ISO 19115 shall be mapped to the RDFS/OWL class or datatype listed in
 [width="90%",options="header"]
 |====================
 | ISO 19115 Type | RDFS/OWL Class or Datatype
-| CI_Citation | #TBD#
 | MD_Metadata | dcat:Dataset
 | MD_Resolution | rdf:langString
 | URL | xsd:anyURI
@@ -403,7 +420,7 @@ For all other types from ISO 19115 used in INSPIRE schemas, suitable mappings ne
 [NOTE]
 ======
 * The approach to map the complex type MD_Resolution to a simple (language tagged) string follows the approach chosen by GeoDCAT-AP (which maps the spatial resolution of a dataset, represented by an instance of MD_Resolution, to rdfs:comment; see <<geodcat_ap,GeoDCAT-AP Annex II, section II.13>> for further details). By only mapping the type MD_Resolution to rdf:langString, we can preserve the semantics of INSPIRE properties that have MD_Resolution as type.
-* The data type CI_Date combines a date(time) with a code that provides the semantic for that date: date of creation, publication, and revision. At the moment, CI_Date is only used by the INSPIRE type DocumentCitation, which is one of the base types. Following the example from GeoDCAT-AP, an instance of CI_Date that uses one of the three date type codes (creation, publication, revision) can be implemented using one of the three properties dct:created, dct:issued, and dct:modified. This mapping is specified in the <<ref_instance_metadata,chapter on conversion of metadata instances>>.
+* The data type CI_Date combines a date(time) with a code that provides the semantic for that date: date of creation, publication, and revision. At the moment, CI_Date is only used by the INSPIRE type DocumentCitation, which is one of the base types. Following the example from GeoDCAT-AP, an instance of CI_Date that uses one of the three date type codes (creation, publication, revision) can be implemented using one of the three properties dct:created, dct:issued, and dct:modified. This mapping is specified in the <<ref_instance_cr_metadata,chapter on conversion of metadata instances>>.
 ======
 
 ////
@@ -450,14 +467,13 @@ For all other types from ISO 19115 used in INSPIRE schemas, suitable mappings ne
 [[ref_cr_mappings_inspireAddresses]]
 ==== INSPIRE Annex I - Addresses
 
-[PERMISSION, id="PMS/OWL/mappings/inspire/AddressRepresentation"]
+[REQUIREMENT, id="REQ/OWL/type/mappings/inspire/annex1/addresses/AddressRepresentation"]
 ======
-The data type "AddressRepresentation" from _INSPIRE Annex I - Addresses_ may be mapped to class "Address" from the ISA Core Location Vocabulary. 
+Type 'AddressRepresentation' from the 'INSPIRE Annex I - Addresses' schema shall be mapped to the RDF/OWL implementation of Type 'Address' (from that same schema).
+
 ======
 
-locn:Address provides a simplified encoding of the "AddressRepresentation" type, which can be sufficient for a given use case. However, for use cases that require complex information as defined by the INSPIRE Address application schema, an OWL encoding of that schema will be needed. 
-
-// The class that represents the type "AddressRepresentation" could then be aligned to the ISA Core Location Vocabulary class "Adress" through subsumption, i.e. an rdfs:subClassOf relationship.#
+This requirement means that the 'AddressRepresentation' is not used in RDF data. Instead, a link to a real 'Address' would be used whenever address information needs to be provided. 
 
 
 
@@ -479,7 +495,7 @@ The INSPIRE spatial object type "NamedPlace" combines a geometry with one or mor
 
 [underline]#Simple or complex encoding#
 
-It is <<ref_req_owl_property_alignment_locn_geographicName,required>> that properties with INSPIRE GeographicalName as value type are aligned with the <<w3c_locn,ISA Programme Location Core Vocabulary>> property "geographicName".
+It is <<REQ/OWL/property/alignment/locn/geographicName,required>> that properties with INSPIRE GeographicalName as value type are aligned with the <<w3c_locn,ISA Programme Location Core Vocabulary>> property "geographicName".
 
 The https://www.w3.org/ns/locn#locn:geographicName[definition of locn:geographicName] states: _"For INSPIRE-conformant data, provide the metadata for the geographic name using a skos:Concept as a datatype."_ That can easily be achieved.
 
@@ -495,6 +511,20 @@ Relevant issue(s):
 * https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/28[Encoding of geographical names]
 
 =======
+
+
+
+[[ref_cr_alignments]]
+=== Alignments
+
+[[ref_cr_alignments_inspireAddresses]]
+==== INSPIRE Annex I - Addresses
+
+[REQUIREMENT, id="REQ/OWL/type/alignments/inspire/annex1/addresses"]
+======
+The RDF/OWL implementation of 'Address' from the 'INSPIRE Annex I - Addresses' schema shall be an rdfs:subClassOf the <<w3c_locn,ISA Programme Location Core Vocabulary>> class "Address".
+
+======
 
 
 
@@ -590,6 +620,7 @@ cp:CadastralParcel  a          owl:Class ;
 Relevant issues:
 
 * https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/7[Upper ontologies for INSPIRE spatial object types]
+* https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/31[AddressComponents are features?]
 
 =======
 
@@ -615,6 +646,8 @@ A data type shall be converted to an OWL class.
 
 ======
 
+NOTE: This requirement does not necessarily apply to all data types. For further details, see <<REC/OWL/type/mapping/dataTypeAsSpatialObjectTypeRepresentation,this permission>>. 
+ 
 
 
 [[ref_cr_type_union]]
@@ -849,21 +882,13 @@ The conversion results in (only showing BiomarkerThematicMetadata and the class 
 
 In this example creating the name of the new properties using concatenation was straightforward. However, the names of \<<union>> options can also follow a different pattern:
 
-[[image_union_example1]]
+[[image_union_example2]]
 .\<<union>> AreaOfResponsibilityType - example from the INSPIRE model
 image::images/union_example_areaOfResponsibilityType.jpg[]
 
 Here, the names of the \<<union>> options already include the name of the property that has the \<<union>> as value type. Concatenating the name of the property that is being replaced and the name of an option would lead to duplication.
 
 Clearly, a single approach to creating the names of new properties would not suffice if the names of \<<union>> types and their options follow different patterns. When automatically converting \<<union>> types, a manual review should therefore be performed.
-
-[CAUTION]
-=======
-This conversion rule has been proposed to solve the following issue(s):
-
-* https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/13[RDF representation of union data types]
-
-=======
 
 
 
@@ -950,6 +975,8 @@ Relevant issue(s):
 
 * https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/16[Reuse of common Linked Data Vocabularies]
 * https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/17[Including information for mapping classes and properties to common definitions in the conceptual model]
+* https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/37[properties to link into Inspire RDF resources]
+
 =======
 
 
@@ -995,7 +1022,7 @@ Common INSPIRE properties, i.e. properties with same semantics defined by multip
 
 This table can be extended in the future, if additional common properties have been identified.
 
-An example of an INSPIRE vocabulary, that defines commonly used concepts, is provided in <<annex_a_core,Annex A>>.
+An example of an INSPIRE vocabulary, that defines commonly used concepts, is available https://github.com/inspire-eu-rdf/inspire-rdf-vocabularies/blob/master/base/base.ttl[online].
 
 // TODO: define another base ontology that provides a namespace for common properties
 
@@ -1094,12 +1121,12 @@ cp:CadastralParcel.geometry
 [[ref_cr_prop_alignment_geographicalName]]
 ==== Geographical name
 
-[[ref_req_owl_property_alignment_locn_geographicName]]
 [REQUIREMENT, id="REQ/OWL/property/alignment/locn/geographicName"]
 ======
 A property that:
 
-* is encoded as an OWL property, and
+* is encoded as an OWL property,
+* belongs to a spatial object type, and
 * has INSPIRE _GeographicalName_ as value type
 
 shall be an rdfs:subPropertyOf the <<w3c_locn,ISA Programme Location Core Vocabulary>> property "geographicName".
@@ -1252,15 +1279,6 @@ If a UML property from the application schema is encoded as an OWL property in t
 ======
 
 
-[CAUTION]
-=======
-Relevant issue(s):
-
-* https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/8[Range for properties with code list typed value]
-
-=======
-
-
 
 [[ref_cr_prop_multiplicity]]
 === Multiplicity
@@ -1276,6 +1294,7 @@ OWL cardinality restrictions are only used to define the semantics of a \<<union
 Relevant issue(s):
 
 * https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/18[Property cardinality]
+* https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/33[SHACL and INSPIRE]
 
 =======
 
@@ -1365,13 +1384,6 @@ No specific rules are defined for the conversion of UML attributes.
 
 No specific rules are defined for the conversion of UML association roles.
 
-[CAUTION]
-=======
-Relevant issue(s):
-
-* https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/27[Representation of aggregation and composition relationships]
-=======
-
 
 
 [[ref_cr_association_class]]
@@ -1387,14 +1399,6 @@ An association class from an INSPIRE application schema shall be converted into 
 
 ======
 
-
-[CAUTION]
-=======
-Relevant issue(s):
-
-* https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/21[Representation of association classes]
-
-=======
 
 
 
@@ -1434,12 +1438,3 @@ cp:CadastralParcel  a          owl:Class ;
  </owl:Class>
 ----------
 ======
-
-        
-[CAUTION]
-=======
-Relevant issue(s):
-
-* https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/20[Representation of OCL constraints]
-
-=======

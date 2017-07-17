@@ -23,4 +23,4 @@ This clause lists documents that were used in the drafting of this document, but
 
 [[w3c_rdfxml]]http://www.w3.org/TR/rdf-syntax-grammar/[W3C RDF 1.1 XML Syntax]
 
-[[w3c_sdw_bp]] https://www.w3.org/TR/2017/NOTE-sdw-bp-20170105[Spatial Data on the Web Best Practices, W3C Working Group Note 05 January 2017]
+[[w3c_sdw_bp]] https://www.w3.org/TR/2017/NOTE-sdw-bp-20170511/[Spatial Data on the Web Best Practices, W3C Working Group Note 11 May 2017]

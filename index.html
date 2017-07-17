@@ -21,7 +21,6 @@
 <li><a href="#_guidelines_for_the_rdf_encoding_of_spatial_data">Guidelines for the RDF encoding of spatial data</a>
 <ul class="sectlevel1">
 <li><a href="#foreword">Foreword</a></li>
-<li><a href="#_introduction">Introduction</a></li>
 <li><a href="#_scope">1. Scope</a></li>
 <li><a href="#_conformance">2. Conformance</a></li>
 <li><a href="#_normative_references">3. Normative references</a></li>
@@ -76,19 +75,24 @@
 <li><a href="#ref_cr_mappings_inspireGeographicalNames">INSPIRE Annex I - Geographical Names</a></li>
 </ul>
 </li>
-<li><a href="#ref_cr_type_name">9.3.2. Class name</a></li>
-<li><a href="#ref_cr_type_abstract">9.3.3. Abstractness</a></li>
-<li><a href="#ref_cr_type_inheritance">9.3.4. Inheritance</a></li>
-<li><a href="#ref_cr_type_feature">9.3.5. Spatial object type</a>
+<li><a href="#ref_cr_alignments">9.3.2. Alignments</a>
+<ul class="sectlevel4">
+<li><a href="#ref_cr_alignments_inspireAddresses">INSPIRE Annex I - Addresses</a></li>
+</ul>
+</li>
+<li><a href="#ref_cr_type_name">9.3.3. Class name</a></li>
+<li><a href="#ref_cr_type_abstract">9.3.4. Abstractness</a></li>
+<li><a href="#ref_cr_type_inheritance">9.3.5. Inheritance</a></li>
+<li><a href="#ref_cr_type_feature">9.3.6. Spatial object type</a>
 <ul class="sectlevel4">
 <li><a href="#ref_cr_type_feature_alignment">Alignment</a></li>
 <li><a href="#ref_cr_type_feature_documentation">Documentation</a></li>
 </ul>
 </li>
-<li><a href="#ref_cr_type_datatype">9.3.6. Data type</a></li>
-<li><a href="#ref_cr_type_union">9.3.7. Union</a></li>
-<li><a href="#ref_cr_type_enumeration">9.3.8. Enumeration</a></li>
-<li><a href="#ref_cr_type_codelist">9.3.9. Code list</a></li>
+<li><a href="#ref_cr_type_datatype">9.3.7. Data type</a></li>
+<li><a href="#ref_cr_type_union">9.3.8. Union</a></li>
+<li><a href="#ref_cr_type_enumeration">9.3.9. Enumeration</a></li>
+<li><a href="#ref_cr_type_codelist">9.3.10. Code list</a></li>
 </ul>
 </li>
 <li><a href="#ref_cr_prop">9.4. Properties</a>
@@ -117,12 +121,13 @@
 </li>
 <li><a href="#ref_instance_cr">10. Instance conversion rules</a>
 <ul class="sectlevel2">
-<li><a href="#_from_input_to_output_data_structure">10.1. From input to output data structure</a></li>
+<li><a href="#ref_instance_cr_input_to_output">10.1. From input to output data structure</a></li>
 <li><a href="#ref_instance_cr_resource_identifier">10.2. Resource identifiers</a></li>
 <li><a href="#ref_instance_cr_considerations_on_spatial_objects">10.3. Considerations on spatial objects</a></li>
-<li><a href="#ref_instance_geometry">10.4. Encoding geometry</a></li>
-<li><a href="#ref_instance_metadata">10.5. Encoding metadata</a></li>
-<li><a href="#_value_collections">10.6. Value collections</a></li>
+<li><a href="#ref_instance_cr_geometry">10.4. Encoding geometry</a></li>
+<li><a href="#ref_instance_cr_metadata">10.5. Encoding metadata</a></li>
+<li><a href="#ref_instance_cr_value_collections">10.6. Value collections</a></li>
+<li><a href="#ref_instance_cr_extensions">10.7. Extensions</a></li>
 </ul>
 </li>
 <li><a href="#annex_a">Annex A - Vocabulary examples (informative)</a></li>
@@ -153,18 +158,6 @@ Infrastructure for Spatial Information in Europe</span></p></td>
 </tr>
 </tbody>
 </table>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-WORK IN PROGRESS
-</td>
-</tr>
-</table>
-</div>
 </div>
 </div>
 <h1 id="_guidelines_for_the_rdf_encoding_of_spatial_data" class="sect0">Guidelines for the RDF encoding of spatial data</h1>
@@ -182,7 +175,7 @@ WORK IN PROGRESS
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Status</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Draft (work in progress)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Draft</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Creator</strong></p></td>
@@ -190,7 +183,7 @@ WORK IN PROGRESS
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Date</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2017-01-31</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2017-07-17</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Subject</strong></p></td>
@@ -269,7 +262,7 @@ WORK IN PROGRESS
 <p>This document specifies an additional encoding rule supporting the consistent representation of spatial data sets that meet the interoperability requirements using RDF. It builds on <a href="https://ies-svn.jrc.ec.europa.eu/projects/rdf-pids/wiki/ARE3NA_RDF_+_PIDs_study">previous work</a> on this subject. All issues are raised and discussed in an <a href="https://github.com/inspire-eu-rdf/inspire-rdf-guidelines">open forum</a>.</p>
 </div>
 <div class="paragraph">
-<p>This is work-in-progress and is being prepared for the ISA Programme by PwC EU Services and interactive instruments GmbH as part of ISA Action 1.17, A Reusable INSPIRE Reference Platform (ARE3NA).</p>
+<p>The document has been prepared for the ISA Programme by PwC EU Services and interactive instruments GmbH as part of ISA Action 1.17, A Reusable INSPIRE Reference Platform (ARE3NA).</p>
 </div>
 <div class="paragraph">
 <p><strong>Disclaimer</strong></p>
@@ -285,14 +278,6 @@ WORK IN PROGRESS
 </div>
 <div class="paragraph">
 <p>All care has been taken by the author to ensure that s/he has obtained, where necessary, permission to use any parts of manuscripts including illustrations, maps, and graphs, on which intellectual property rights already exist from the titular holder(s) of such rights or from her/his or their legal representative.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_introduction">Introduction</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><mark>TBD</mark></p>
 </div>
 </div>
 </div>
@@ -348,7 +333,7 @@ The encoding rule does not provide a bijective mapping between the information i
 <h2 id="_conformance">2. Conformance</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><mark>TBD - do we need an abstract test suite?</mark></p>
+<p>If these technical guidelines are adopted in the future, then conformance classes for INSPIRE RDF vocabularies and instance documents will be added.</p>
 </div>
 </div>
 </div>
@@ -396,9 +381,6 @@ The encoding rule does not provide a bijective mapping between the information i
 <div class="sect1">
 <h2 id="_terms_and_abbreviations">4. Terms and abbreviations</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p><mark>TBD</mark></p>
-</div>
 <div class="sect2">
 <h3 id="ref_terms">4.1. Terms</h3>
 <div class="dlist">
@@ -486,7 +468,7 @@ It should be noted that the term has a different meaning in the ISO 19100 series
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-In the conceptual schema language UML a spatial object type will be described by a class with stereotype <a href="#featureType">[featureType]</a>.
+In the conceptual schema language UML a spatial object type will be described by a class with stereotype &lt;&lt;featureType&gt;&gt;.
 </td>
 </tr>
 </table>
@@ -679,6 +661,10 @@ This is a note.
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">base</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://inspire.ec.europa.eu/ont/base#" class="bare">http://inspire.ec.europa.eu/ont/base#</a></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">dcat</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.w3.org/ns/dcat#" class="bare">http://www.w3.org/ns/dcat#</a></p></td>
 </tr>
@@ -696,7 +682,7 @@ This is a note.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">iso19150-2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://def.isotc211.org/iso19150-2/2012/base#" class="bare">http://def.isotc211.org/iso19150-2/2012/base#</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://def.isotc211.org/iso19150/-2/2012/base#" class="bare">http://def.isotc211.org/iso19150/-2/2012/base#</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">locn</p></td>
@@ -721,6 +707,10 @@ This is a note.
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">skos</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.w3.org/2004/02/skos/core#" class="bare">http://www.w3.org/2004/02/skos/core#</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">time</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.w3.org/2006/time#" class="bare">http://www.w3.org/2006/time#</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">xsd</p></td>
@@ -851,7 +841,7 @@ As mentioned before, the guidelines include input from pilots to test draft INSP
 <p>Choose the metadata format based upon the formats that are supported by the search engines with which you intend to make your data searchable. Annotations in HTML pages using the schema.org vocabulary is metadata that web crawlers are using. DCAT (and extensions like GeoDCAT-AP) are currently mostly used by e-government data portals.</p>
 </div>
 <div class="paragraph">
-<p>For further information, see <a href="https://www.w3.org/TR/2017/NOTE-sdw-bp-20170105/#indexable-by-search-engines">Best Practice 4: Make your spatial data indexable by search engines</a> in the <a href="#w3c_sdw_bp">Spatial Data on the Web Best Practices</a>.</p>
+<p>For further information, see <a href="https://www.w3.org/TR/2017/NOTE-sdw-bp-20170511/#bp-indexable">Best Practice 2: Make your spatial data indexable by search engines</a> in the <a href="#w3c_sdw_bp">Spatial Data on the Web Best Practices</a>.</p>
 </div>
 </td>
 </tr>
@@ -1101,7 +1091,7 @@ Data types are not categorised as objects in the input data structure.
 <div class="content">
 <pre class="pygments highlight"><code data-lang="turtle"><span></span><span class="lineno">1 </span><span class="tok-nv">&lt;http://inspire.ec.europa.eu/ont/cp&gt;</span><span class="tok-w"></span>
 <span class="lineno">2 </span><span class="tok-w">        </span><span class="tok-kt">a</span><span class="tok-w">                </span><span class="tok-nn">owl:</span><span class="tok-nt">Ontology</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
-<span class="lineno">3 </span><span class="tok-w">        </span><span class="tok-nn">owl:</span><span class="tok-nt">imports</span><span class="tok-w">      </span><span class="tok-nv">&lt;http://def.isotc211.org/iso19150-2/2012/base&gt;</span><span class="tok-w"> </span><span class="tok-p">,</span><span class="tok-w"> </span><span class="tok-nv">&lt;https://github.com/inspire-eu-rdf/inspire-rdf-vocabularies/blob/master/ad/ad.ttl&gt;</span><span class="tok-w"> </span><span class="tok-p">,</span><span class="tok-w"> </span><span class="tok-nv">&lt;https://www.w3.org/ns/locn.ttl&gt;</span><span class="tok-w"> </span><span class="tok-p">,</span><span class="tok-w"> </span><span class="tok-nv">&lt;http://www.w3.org/2004/02/skos/core&gt;</span><span class="tok-w"> </span><span class="tok-p">,</span><span class="tok-w"> </span><span class="tok-nv">&lt;http://www.opengis.net/ont/geosparql&gt;</span><span class="tok-w"> </span><span class="tok-p">,</span><span class="tok-w"> </span><span class="tok-nv">&lt;https://github.com/inspire-eu-rdf/inspire-rdf-vocabularies/blob/master/base/base.ttl&gt;</span><span class="tok-w"> </span><span class="tok-p">,</span><span class="tok-w"> </span><span class="tok-nv">&lt;https://github.com/inspire-eu-rdf/inspire-rdf-vocabularies/blob/master/au/au.ttl&gt;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
+<span class="lineno">3 </span><span class="tok-w">        </span><span class="tok-nn">owl:</span><span class="tok-nt">imports</span><span class="tok-w">      </span><span class="tok-nv">&lt;http://def.isotc211.org/iso19150/-2/2012/base&gt;</span><span class="tok-w"> </span><span class="tok-p">,</span><span class="tok-w"> </span><span class="tok-nv">&lt;https://github.com/inspire-eu-rdf/inspire-rdf-vocabularies/blob/master/ad/ad.ttl&gt;</span><span class="tok-w"> </span><span class="tok-p">,</span><span class="tok-w"> </span><span class="tok-nv">&lt;https://www.w3.org/ns/locn.ttl&gt;</span><span class="tok-w"> </span><span class="tok-p">,</span><span class="tok-w"> </span><span class="tok-nv">&lt;http://www.w3.org/2004/02/skos/core&gt;</span><span class="tok-w"> </span><span class="tok-p">,</span><span class="tok-w"> </span><span class="tok-nv">&lt;http://www.opengis.net/ont/geosparql&gt;</span><span class="tok-w"> </span><span class="tok-p">,</span><span class="tok-w"> </span><span class="tok-nv">&lt;https://github.com/inspire-eu-rdf/inspire-rdf-vocabularies/blob/master/base/base.ttl&gt;</span><span class="tok-w"> </span><span class="tok-p">,</span><span class="tok-w"> </span><span class="tok-nv">&lt;https://github.com/inspire-eu-rdf/inspire-rdf-vocabularies/blob/master/au/au.ttl&gt;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
 <span class="lineno">4 </span><span class="tok-w">        </span><span class="tok-nn">owl:</span><span class="tok-nt">versionIRI</span><span class="tok-w">   </span><span class="tok-s">&quot;http://inspire.ec.europa.eu/ont/cp/4.0&quot;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
 <span class="lineno">5 </span><span class="tok-w">        </span><span class="tok-nn">owl:</span><span class="tok-nt">versionInfo</span><span class="tok-w">  </span><span class="tok-s">&quot;4.0&quot;</span><span class="tok-w"> </span><span class="tok-p">;</span><span class="tok-w"></span>
 <span class="lineno">6 </span><span class="tok-w">        </span><span class="tok-nn">skos:</span><span class="tok-nt">definition</span><span class="tok-w">  </span><span class="tok-s">&quot;The application schema CadastralParcels contains the feature types CadastralParcel, CadastralBoundary and CadastralIndexSet.&quot;</span><span class="tok-o">@</span><span class="tok-ge">en</span><span class="tok-w"> </span><span class="tok-p">.</span><span class="tok-w"></span></code></pre>
@@ -1113,7 +1103,7 @@ Data types are not categorised as objects in the input data structure.
 <div class="listingblock">
 <div class="content">
 <pre class="pygments highlight"><code data-lang="xml"><span></span><span class="lineno"> 1 </span>  <span class="tok-nt">&lt;owl:Ontology</span> <span class="tok-na">rdf:about=</span><span class="tok-s">&quot;http://inspire.ec.europa.eu/ont/cp&quot;</span><span class="tok-nt">&gt;</span>
-<span class="lineno"> 2 </span>    <span class="tok-nt">&lt;owl:imports</span> <span class="tok-na">rdf:resource=</span><span class="tok-s">&quot;http://def.isotc211.org/iso19150-2/2012/base&quot;</span><span class="tok-nt">/&gt;</span>
+<span class="lineno"> 2 </span>    <span class="tok-nt">&lt;owl:imports</span> <span class="tok-na">rdf:resource=</span><span class="tok-s">&quot;http://def.isotc211.org/iso19150/-2/2012/base&quot;</span><span class="tok-nt">/&gt;</span>
 <span class="lineno"> 3 </span>    <span class="tok-nt">&lt;owl:imports</span> <span class="tok-na">rdf:resource=</span><span class="tok-s">&quot;https://github.com/inspire-eu-rdf/inspire-rdf-vocabularies/blob/master/ad/ad.ttl&quot;</span><span class="tok-nt">/&gt;</span>
 <span class="lineno"> 4 </span>    <span class="tok-nt">&lt;owl:imports</span> <span class="tok-na">rdf:resource=</span><span class="tok-s">&quot;https://www.w3.org/ns/locn.ttl&quot;</span><span class="tok-nt">/&gt;</span>
 <span class="lineno"> 5 </span>    <span class="tok-nt">&lt;skos:definition</span> <span class="tok-na">xml:lang=</span><span class="tok-s">&quot;en&quot;</span><span class="tok-nt">&gt;</span>The application schema CadastralParcels contains the feature types CadastralParcel, CadastralBoundary and CadastralIndexSet.<span class="tok-nt">&lt;/skos:definition&gt;</span>
@@ -1217,9 +1207,6 @@ Data types are not categorised as objects in the input data structure.
 <ul>
 <li>
 <p><a href="https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/26">URIs for INSPIRE - 303 URIs vs. hash URIs</a></p>
-</li>
-<li>
-<p><a href="https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/3">URI Scheme for RDF namespaces – management aspects</a></p>
 </li>
 </ul>
 </div>
@@ -1380,6 +1367,32 @@ Because the information for mapping or aligning types can be complex, it is not 
 <div class="paragraph">
 <p>The following subsections document known mappings. They can be extended in the future.</p>
 </div>
+<div id="REC/OWL/type/mapping/dataTypeAsSpatialObjectTypeRepresentation" class="admonitionblock permission">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-permission" title="Permission"></i>
+</td>
+<td class="content">
+<div class="title">Permission REC/OWL/type/mapping/dataTypeAsSpatialObjectTypeRepresentation</div>
+<div class="paragraph">
+<p>A &lt;&lt;dataType&gt;&gt; of the INSPIRE conceptual schemas, which is primarily used as a simplified view on an INSPIRE spatial object type, may, in the RDF encoding, either be mapped to or merged with that spatial object type.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>When working with linked data, you should be able to directly link to a spatial object, rather than introducing an indirection by linking to a resource which merely provides a simplified view on the spatial object.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 7. Mapping AddressRepresentation</div>
+<div class="content">
+<div class="paragraph">
+<p>The INSPIRE type 'AddressRepresentation' is mapped to the RDF/OWL representation of the INSPIRE type 'Address'. For further details, see <a href="#ref_cr_mappings_inspireAddresses">here</a>.</p>
+</div>
+</div>
+</div>
 <div class="admonitionblock caution">
 <table>
 <tr>
@@ -1393,22 +1406,13 @@ Because the information for mapping or aligning types can be complex, it is not 
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/9">RDF types for base types from ISO 19103 - types that map directly to XML Schema types</a></p>
-</li>
-<li>
 <p><a href="https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/10">RDF types for base types from ISO 19103 - measure types</a></p>
-</li>
-<li>
-<p><a href="https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/11">RDF types for base types from ISO 19103 - ‘Any’ type</a></p>
 </li>
 <li>
 <p><a href="https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/12">RDF types and properties for INSPIRE foundation schemas</a></p>
 </li>
 <li>
 <p><a href="https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/16">Reuse of common Linked Data Vocabularies</a></p>
-</li>
-<li>
-<p><a href="https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/17">Including information for mapping classes and properties to common definitions in the conceptual model</a></p>
 </li>
 </ul>
 </div>
@@ -1484,44 +1488,64 @@ Because the information for mapping or aligning types can be complex, it is not 
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Angle</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><mark>TBD</mark></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">base:Measure</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Area</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><mark>TBD</mark></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">base:Measure</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Distance</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><mark>TBD</mark></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">base:Measure</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Length</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><mark>TBD</mark></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">base:Measure</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Measure</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><mark>TBD</mark></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">base:Measure</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Probability</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><mark>TBD</mark></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">base:Measure</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Velocity</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><mark>TBD</mark></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">base:Measure</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Volume</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><mark>TBD</mark></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">UnitOfMeasure</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><mark>TBD: rdfs:Class if no recommendation can be made</mark></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">base:Measure</p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
 <p>For all other types from ISO 19103 used in INSPIRE schemas, suitable mappings need to be found on a case-by-case basis.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <a href="https://www.w3.org/TR/sdw-bp/#c-unitofmeasure">Spatial Data on the Web Best Practices document states</a>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>"<em>There is no evidence of best practice here — nor is there consensus on which data model is best for describing units of measure.</em>"</p>
+</li>
+<li>
+<p>"<em>The W3C Web of Things Interest Group has created a task force to address the challenges of semantic interoperability relating to units of measure, which may lead to emergence of best practices that can be adopted by spatial data publishers.</em>"</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect4">
@@ -1710,7 +1734,7 @@ Both ontologies define a hierarchy of subclasses of the GeoSPARQL Geometry class
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TM_Position</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><mark>TBD:</mark> <a href="http://www.w3.org/2006/time#Instant" class="bare">http://www.w3.org/2006/time#Instant</a> - and for simple cases xsd:date and xsd:dateTime?</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">time:TemporalPosition</p></td>
 </tr>
 </tbody>
 </table>
@@ -1749,10 +1773,6 @@ Both ontologies define a hierarchy of subclasses of the GeoSPARQL Geometry class
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CI_Citation</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><mark>TBD</mark></p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MD_Metadata</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">dcat:Dataset</p></td>
 </tr>
@@ -1782,7 +1802,7 @@ Both ontologies define a hierarchy of subclasses of the GeoSPARQL Geometry class
 <p>The approach to map the complex type MD_Resolution to a simple (language tagged) string follows the approach chosen by GeoDCAT-AP (which maps the spatial resolution of a dataset, represented by an instance of MD_Resolution, to rdfs:comment; see <a href="#geodcat_ap">GeoDCAT-AP Annex II, section II.13</a> for further details). By only mapping the type MD_Resolution to rdf:langString, we can preserve the semantics of INSPIRE properties that have MD_Resolution as type.</p>
 </li>
 <li>
-<p>The data type CI_Date combines a date(time) with a code that provides the semantic for that date: date of creation, publication, and revision. At the moment, CI_Date is only used by the INSPIRE type DocumentCitation, which is one of the base types. Following the example from GeoDCAT-AP, an instance of CI_Date that uses one of the three date type codes (creation, publication, revision) can be implemented using one of the three properties dct:created, dct:issued, and dct:modified. This mapping is specified in the <a href="#ref_instance_metadata">chapter on conversion of metadata instances</a>.</p>
+<p>The data type CI_Date combines a date(time) with a code that provides the semantic for that date: date of creation, publication, and revision. At the moment, CI_Date is only used by the INSPIRE type DocumentCitation, which is one of the base types. Following the example from GeoDCAT-AP, an instance of CI_Date that uses one of the three date type codes (creation, publication, revision) can be implemented using one of the three properties dct:created, dct:issued, and dct:modified. This mapping is specified in the <a href="#ref_instance_cr_metadata">chapter on conversion of metadata instances</a>.</p>
 </li>
 </ul>
 </div>
@@ -1833,23 +1853,23 @@ Both ontologies define a hierarchy of subclasses of the GeoSPARQL Geometry class
 </div>
 <div class="sect4">
 <h5 id="ref_cr_mappings_inspireAddresses">INSPIRE Annex I - Addresses</h5>
-<div id="PMS/OWL/mappings/inspire/AddressRepresentation" class="admonitionblock permission">
+<div id="REQ/OWL/type/mappings/inspire/annex1/addresses/AddressRepresentation" class="admonitionblock requirement">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-permission" title="Permission"></i>
+<i class="fa icon-requirement" title="Requirement"></i>
 </td>
 <td class="content">
-<div class="title">Permission PMS/OWL/mappings/inspire/AddressRepresentation</div>
+<div class="title">Requirement REQ/OWL/type/mappings/inspire/annex1/addresses/AddressRepresentation</div>
 <div class="paragraph">
-<p>The data type "AddressRepresentation" from <em>INSPIRE Annex I - Addresses</em> may be mapped to class "Address" from the ISA Core Location Vocabulary.</p>
+<p>Type 'AddressRepresentation' from the 'INSPIRE Annex I - Addresses' schema shall be mapped to the RDF/OWL implementation of Type 'Address' (from that same schema).</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>locn:Address provides a simplified encoding of the "AddressRepresentation" type, which can be sufficient for a given use case. However, for use cases that require complex information as defined by the INSPIRE Address application schema, an OWL encoding of that schema will be needed.</p>
+<p>This requirement means that the 'AddressRepresentation' is not used in RDF data. Instead, a link to a real 'Address' would be used whenever address information needs to be provided.</p>
 </div>
 </div>
 <div class="sect4">
@@ -1882,7 +1902,7 @@ Both ontologies define a hierarchy of subclasses of the GeoSPARQL Geometry class
 <p><span class="underline">Simple or complex encoding</span></p>
 </div>
 <div class="paragraph">
-<p>It is <a href="#ref_req_owl_property_alignment_locn_geographicName">required</a> that properties with INSPIRE GeographicalName as value type are aligned with the <a href="#w3c_locn">ISA Programme Location Core Vocabulary</a> property "geographicName".</p>
+<p>It is <a href="#REQ/OWL/property/alignment/locn/geographicName">required</a> that properties with INSPIRE GeographicalName as value type are aligned with the <a href="#w3c_locn">ISA Programme Location Core Vocabulary</a> property "geographicName".</p>
 </div>
 <div class="paragraph">
 <p>The <a href="https://www.w3.org/ns/locn#locn:geographicName">definition of locn:geographicName</a> states: <em>"For INSPIRE-conformant data, provide the metadata for the geographic name using a skos:Concept as a datatype."</em> That can easily be achieved.</p>
@@ -1918,7 +1938,28 @@ Another case where the encoding of a geographical name as an individual resource
 </div>
 </div>
 <div class="sect3">
-<h4 id="ref_cr_type_name">9.3.2. Class name</h4>
+<h4 id="ref_cr_alignments">9.3.2. Alignments</h4>
+<div class="sect4">
+<h5 id="ref_cr_alignments_inspireAddresses">INSPIRE Annex I - Addresses</h5>
+<div id="REQ/OWL/type/alignments/inspire/annex1/addresses" class="admonitionblock requirement">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-requirement" title="Requirement"></i>
+</td>
+<td class="content">
+<div class="title">Requirement REQ/OWL/type/alignments/inspire/annex1/addresses</div>
+<div class="paragraph">
+<p>The RDF/OWL implementation of 'Address' from the 'INSPIRE Annex I - Addresses' schema shall be an rdfs:subClassOf the <a href="#w3c_locn">ISA Programme Location Core Vocabulary</a> class "Address".</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="ref_cr_type_name">9.3.3. Class name</h4>
 <div id="REQ/OWL/type/name" class="admonitionblock requirement">
 <table>
 <tr>
@@ -1957,7 +1998,7 @@ Another case where the encoding of a geographical name as an individual resource
 </div>
 </div>
 <div class="sect3">
-<h4 id="ref_cr_type_abstract">9.3.3. Abstractness</h4>
+<h4 id="ref_cr_type_abstract">9.3.4. Abstractness</h4>
 <div id="REQ/OWL/type/abstract" class="admonitionblock requirement">
 <table>
 <tr>
@@ -1975,7 +2016,7 @@ Another case where the encoding of a geographical name as an individual resource
 </div>
 </div>
 <div class="sect3">
-<h4 id="ref_cr_type_inheritance">9.3.4. Inheritance</h4>
+<h4 id="ref_cr_type_inheritance">9.3.5. Inheritance</h4>
 <div id="REQ/OWL/type/inheritance" class="admonitionblock requirement">
 <table>
 <tr>
@@ -1996,7 +2037,7 @@ Another case where the encoding of a geographical name as an individual resource
 </div>
 </div>
 <div class="sect3">
-<h4 id="ref_cr_type_feature">9.3.5. Spatial object type</h4>
+<h4 id="ref_cr_type_feature">9.3.6. Spatial object type</h4>
 <div id="REQ/OWL/type/spatialobject" class="admonitionblock requirement">
 <table>
 <tr>
@@ -2036,7 +2077,7 @@ Another case where the encoding of a geographical name as an individual resource
 <p>A GeoSPARQL feature is not required to have a geometry property. Thus, INSPIRE spatial object types for which the conceptual model does not define a geometry property, or which only have implicit geometry (for example provided by one or more linked spatial object types), are valid GeoSPARQL features.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 7. Aligning CadastralParcel to GeoSPARQL "Feature"</div>
+<div class="title">Example 8. Aligning CadastralParcel to GeoSPARQL "Feature"</div>
 <div class="content">
 <div class="paragraph">
 <p><span class="underline">RDF/Turtle serialization</span></p>
@@ -2074,6 +2115,9 @@ Another case where the encoding of a geographical name as an individual resource
 <li>
 <p><a href="https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/7">Upper ontologies for INSPIRE spatial object types</a></p>
 </li>
+<li>
+<p><a href="https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/31">AddressComponents are features?</a></p>
+</li>
 </ul>
 </div>
 </td>
@@ -2101,7 +2145,7 @@ Another case where the encoding of a geographical name as an individual resource
 </div>
 </div>
 <div class="sect3">
-<h4 id="ref_cr_type_datatype">9.3.6. Data type</h4>
+<h4 id="ref_cr_type_datatype">9.3.7. Data type</h4>
 <div id="REQ/OWL/type/datatype" class="admonitionblock requirement">
 <table>
 <tr>
@@ -2117,9 +2161,21 @@ Another case where the encoding of a geographical name as an individual resource
 </tr>
 </table>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This requirement does not necessarily apply to all data types. For further details, see <a href="#REC/OWL/type/mapping/dataTypeAsSpatialObjectTypeRepresentation">this permission</a>.
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect3">
-<h4 id="ref_cr_type_union">9.3.7. Union</h4>
+<h4 id="ref_cr_type_union">9.3.8. Union</h4>
 <div class="paragraph">
 <p>A &lt;&lt;union&gt;&gt; represents a choice between multiple properties. The properties can carry a specific meaning. They can have different value types. They can have a multiplicity other than exactly 1.</p>
 </div>
@@ -2213,7 +2269,7 @@ Another case where the encoding of a geographical name as an individual resource
 <p>The conversion results in (only showing BiomarkerThematicMetadata and the class expression that captures the &lt;&lt;union&gt;&gt; semantics):</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 8. Conversion of a union</div>
+<div class="title">Example 9. Conversion of a union</div>
 <div class="content">
 <div class="paragraph">
 <p><span class="underline">RDF/Turtle serialization</span></p>
@@ -2413,7 +2469,7 @@ Another case where the encoding of a geographical name as an individual resource
 <div class="paragraph">
 <p>In this example creating the name of the new properties using concatenation was straightforward. However, the names of &lt;&lt;union&gt;&gt; options can also follow a different pattern:</p>
 </div>
-<div id="image_union_example1" class="imageblock">
+<div id="image_union_example2" class="imageblock">
 <div class="content">
 <img src="images/union_example_areaOfResponsibilityType.jpg" alt="union example areaOfResponsibilityType">
 </div>
@@ -2425,30 +2481,9 @@ Another case where the encoding of a geographical name as an individual resource
 <div class="paragraph">
 <p>Clearly, a single approach to creating the names of new properties would not suffice if the names of &lt;&lt;union&gt;&gt; types and their options follow different patterns. When automatically converting &lt;&lt;union&gt;&gt; types, a manual review should therefore be performed.</p>
 </div>
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-caution" title="Caution"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>This conversion rule has been proposed to solve the following issue(s):</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/13">RDF representation of union data types</a></p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-</table>
-</div>
 </div>
 <div class="sect3">
-<h4 id="ref_cr_type_enumeration">9.3.8. Enumeration</h4>
+<h4 id="ref_cr_type_enumeration">9.3.9. Enumeration</h4>
 <div id="REC/OWL/type/enumeration" class="admonitionblock requirement">
 <table>
 <tr>
@@ -2468,7 +2503,7 @@ Another case where the encoding of a geographical name as an individual resource
 </table>
 </div>
 <div class="exampleblock">
-<div class="title">Example 9. Conversion of an enumeration as OWL DataOneOf</div>
+<div class="title">Example 10. Conversion of an enumeration as OWL DataOneOf</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -2480,7 +2515,7 @@ Another case where the encoding of a geographical name as an individual resource
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Example 10. Conversion of an enumeration as a code list</div>
+<div class="title">Example 11. Conversion of an enumeration as a code list</div>
 <div class="content">
 <div class="paragraph">
 <p>The <a href="http://inspire.ec.europa.eu/registry">INSPIRE Registry</a> contains SKOS representations of enumerations defined in INSPIRE application schemas. One example is the enumeration <em>TechnicalStatusValue</em>. An <a href="http://inspire.ec.europa.eu/enumeration/TechnicalStatusValue">HTML page</a> is available, with links to other representations of the enumeration, for example <a href="http://inspire.ec.europa.eu/enumeration/TechnicalStatusValue/TechnicalStatusValue.en.rdf">RDF</a>.</p>
@@ -2489,7 +2524,7 @@ Another case where the encoding of a geographical name as an individual resource
 </div>
 </div>
 <div class="sect3">
-<h4 id="ref_cr_type_codelist">9.3.9. Code list</h4>
+<h4 id="ref_cr_type_codelist">9.3.10. Code list</h4>
 <div id="REQ/OWL/type/codelist" class="admonitionblock requirement">
 <table>
 <tr>
@@ -2506,7 +2541,7 @@ Another case where the encoding of a geographical name as an individual resource
 </table>
 </div>
 <div class="exampleblock">
-<div class="title">Example 11. Conversion of a code list</div>
+<div class="title">Example 12. Conversion of a code list</div>
 <div class="content">
 <div class="paragraph">
 <p>The <a href="http://inspire.ec.europa.eu/registry">INSPIRE Registry</a> contains SKOS representations of code lists used in INSPIRE application schemas. One example is the code list <em>Natura2000DesignationValue</em>. An <a href="http://inspire.ec.europa.eu/codelist/Natura2000DesignationValue">HTML page</a> is available, with links to other representations of the code list, for example <a href="http://inspire.ec.europa.eu/codelist/Natura2000DesignationValue/Natura2000DesignationValue.en.rdf">RDF</a>.</p>
@@ -2590,6 +2625,9 @@ Because the information for mapping, aligning, and omitting properties can be co
 <li>
 <p><a href="https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/17">Including information for mapping classes and properties to common definitions in the conceptual model</a></p>
 </li>
+<li>
+<p><a href="https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/37">properties to link into Inspire RDF resources</a></p>
+</li>
 </ul>
 </div>
 </td>
@@ -2632,7 +2670,7 @@ Because the information for mapping, aligning, and omitting properties can be co
 <p>This ensures consistency of property mappings.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 12. Consistent mapping for property "name"</div>
+<div class="title">Example 13. Consistent mapping for property "name"</div>
 <div class="content">
 <div class="paragraph">
 <p>Let us assume that a property "name" has "GeographicalName" as value type. If "GeographicalName" is mapped to rdfs:Literal, then a consistent mapping for property "name" is rdfs:label, since its range is rdfs:Literal.</p>
@@ -2684,7 +2722,7 @@ Because the information for mapping, aligning, and omitting properties can be co
 <p>This table can be extended in the future, if additional common properties have been identified.</p>
 </div>
 <div class="paragraph">
-<p>An example of an INSPIRE vocabulary, that defines commonly used concepts, is provided in <a href="#annex_a_core">Annex A</a>.</p>
+<p>An example of an INSPIRE vocabulary, that defines commonly used concepts, is available <a href="https://github.com/inspire-eu-rdf/inspire-rdf-vocabularies/blob/master/base/base.ttl">online</a>.</p>
 </div>
 <div id="REC/OWL/property/mapping/valueTypeGeographicalName" class="admonitionblock permission">
 <table>
@@ -2812,7 +2850,7 @@ Because the information for mapping, aligning, and omitting properties can be co
 <p>The property "hasDefaultGeometry" is defined by GeoSPARQL as an rdfs:subPropertyOf "hasGeometry". Therefore, if a property is an rdfs:subPropertyOf GeoSPARQL "hasDefaultGeometry", this entails that the property is also an rdfs:subPropertyOf GeoSPARQL "hasGeometry".</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 13. Aligning property "geometry" of CadastralParcel</div>
+<div class="title">Example 14. Aligning property "geometry" of CadastralParcel</div>
 <div class="content">
 <div class="paragraph">
 <p><span class="underline">RDF/Turtle serialization</span></p>
@@ -2854,7 +2892,10 @@ Because the information for mapping, aligning, and omitting properties can be co
 <div class="ulist">
 <ul>
 <li>
-<p>is encoded as an OWL property, and</p>
+<p>is encoded as an OWL property,</p>
+</li>
+<li>
+<p>belongs to a spatial object type, and</p>
 </li>
 <li>
 <p>has INSPIRE <em>GeographicalName</em> as value type</p>
@@ -2869,7 +2910,7 @@ Because the information for mapping, aligning, and omitting properties can be co
 </table>
 </div>
 <div class="exampleblock">
-<div class="title">Example 14. Aligning property "name" of CadastralZoning</div>
+<div class="title">Example 15. Aligning property "name" of CadastralZoning</div>
 <div class="content">
 <div class="paragraph">
 <p><span class="underline">RDF/Turtle serialization</span></p>
@@ -3022,7 +3063,7 @@ property name (so that the OWL property declaration is unique in the ontology), 
 </table>
 </div>
 <div class="exampleblock">
-<div class="title">Example 15. Declaring property "referencePoint" (used by CadastralParcel and CadastralZoning) with global scope</div>
+<div class="title">Example 16. Declaring property "referencePoint" (used by CadastralParcel and CadastralZoning) with global scope</div>
 <div class="content">
 <div class="paragraph">
 <p><span class="underline">RDF/Turtle serialization</span></p>
@@ -3110,27 +3151,6 @@ property name (so that the OWL property declaration is unique in the ontology), 
 </tr>
 </table>
 </div>
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-caution" title="Caution"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Relevant issue(s):</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/8">Range for properties with code list typed value</a></p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-</table>
-</div>
 </div>
 <div class="sect3">
 <h4 id="ref_cr_prop_multiplicity">9.4.7. Multiplicity</h4>
@@ -3157,6 +3177,9 @@ property name (so that the OWL property declaration is unique in the ontology), 
 <ul>
 <li>
 <p><a href="https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/18">Property cardinality</a></p>
+</li>
+<li>
+<p><a href="https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/33">SHACL and INSPIRE</a></p>
 </li>
 </ul>
 </div>
@@ -3248,7 +3271,7 @@ property name (so that the OWL property declaration is unique in the ontology), 
 <p>With this informal reference, the ontology definition of the INSPIRE property at least provides a hint for implementers on which SKOS concept scheme and according SKOS concepts should be used.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Example 16. Vocabulary reference for property 'level' of spatial object type 'CadastralZoning'</div>
+<div class="title">Example 17. Vocabulary reference for property 'level' of spatial object type 'CadastralZoning'</div>
 <div class="content">
 <div class="paragraph">
 <p><span class="underline">RDF/Turtle serialization</span></p>
@@ -3290,27 +3313,6 @@ property name (so that the OWL property declaration is unique in the ontology), 
 <div class="paragraph">
 <p>No specific rules are defined for the conversion of UML association roles.</p>
 </div>
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-caution" title="Caution"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Relevant issue(s):</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/27">Representation of aggregation and composition relationships</a></p>
-</li>
-</ul>
-</div>
-</td>
-</tr>
-</table>
-</div>
 </div>
 </div>
 <div class="sect2">
@@ -3331,27 +3333,6 @@ property name (so that the OWL property declaration is unique in the ontology), 
 <div class="title">Requirement REQ/OWL/associationClass/general</div>
 <div class="paragraph">
 <p>An association class from an INSPIRE application schema shall be converted into a semantically equivalent type, following the rule defined by GML 3.3. The equivalent type shall then be converted to RDF as defined in this document.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-caution" title="Caution"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Relevant issue(s):</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/21">Representation of association classes</a></p>
-</li>
-</ul>
 </div>
 </td>
 </tr>
@@ -3392,7 +3373,7 @@ property name (so that the OWL property declaration is unique in the ontology), 
 </table>
 </div>
 <div class="exampleblock">
-<div class="title">Example 17. Conversion of OCL constraint "areaValueUoM" from CadastralParcel</div>
+<div class="title">Example 18. Conversion of OCL constraint "areaValueUoM" from CadastralParcel</div>
 <div class="content">
 <div class="paragraph">
 <p><span class="underline">RDF/Turtle serialization</span></p>
@@ -3416,6 +3397,12 @@ property name (so that the OWL property declaration is unique in the ontology), 
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ref_instance_cr">10. Instance conversion rules</h2>
+<div class="sectionbody">
 <div class="admonitionblock caution">
 <table>
 <tr>
@@ -3429,7 +3416,7 @@ property name (so that the OWL property declaration is unique in the ontology), 
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/20">Representation of OCL constraints</a></p>
+<p><a href="https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/38">Example of spatial object encoded using INSPIRE RDF vocabularies</a></p>
 </li>
 </ul>
 </div>
@@ -3437,17 +3424,8 @@ property name (so that the OWL property declaration is unique in the ontology), 
 </tr>
 </table>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="ref_instance_cr">10. Instance conversion rules</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><mark>TBD: What else needs to be documented in this chapter? An example instance would certainly be useful. Creating an example of an INSPIRE spatial object encoded in RDF has been postponed until this document is sufficiently stable.</mark></p>
-</div>
 <div class="sect2">
-<h3 id="_from_input_to_output_data_structure">10.1. From input to output data structure</h3>
+<h3 id="ref_instance_cr_input_to_output">10.1. From input to output data structure</h3>
 <div class="paragraph">
 <p>An object from the input structure is converted to an RDF resource. Object properties are represented by RDF resource properties. A dataset is represented by an RDF graph.</p>
 </div>
@@ -3566,6 +3544,18 @@ property name (so that the OWL property declaration is unique in the ontology), 
 <div class="paragraph">
 <p>As we can see, gaining new knowledge from linked data is a hard problem. It is not solved by simply establishing equality (by using the same resource identifier, or by using owl:sameAs). In fact, abstractions of real-world phenomena created by different communities can rarely considered to be equal / the same. The abstractions will very likely be different, to a greater or lesser extent.</p>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<a href="https://www.w3.org/TR/sdw-bp/#bp-identifiers">Best practice No 1 of the The Spatial Data on the Web Best Practices</a> also recommends caution when using owl:sameAs: "<em>Care must always be taken when using owl:sameAs to determine that [the] two URIs actually refer to the same resource, rather than two resources that are similar. Warning: don&#8217;t say it if you&#8217;re not sure it&#8217;s true!</em>"
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>How can INSPIRE RDF data support referencing the real-world phenomena that are abstracted, without requiring resource equality? The link between an INSPIRE resource and one or more real-world phenomena can be established with a property that does not imply resource equality. Unfortunately, the semantic web standards do not define a property with these semantics.</p>
 </div>
@@ -3590,7 +3580,7 @@ property name (so that the OWL property declaration is unique in the ontology), 
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Relevant issues:</p>
+<p>Relevant issue(s):</p>
 </div>
 <div class="ulist">
 <ul>
@@ -3603,9 +3593,6 @@ property name (so that the OWL property declaration is unique in the ontology), 
 <li>
 <p><a href="https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/24">Relationship between resources identifying the same real-world phenomenon</a></p>
 </li>
-<li>
-<p><a href="https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/25">INSPIRE spatial object type classification</a></p>
-</li>
 </ul>
 </div>
 </td>
@@ -3614,7 +3601,7 @@ property name (so that the OWL property declaration is unique in the ontology), 
 </div>
 </div>
 <div class="sect2">
-<h3 id="ref_instance_geometry">10.4. Encoding geometry</h3>
+<h3 id="ref_instance_cr_geometry">10.4. Encoding geometry</h3>
 <div id="REQ/OWL/instance/geometry" class="admonitionblock requirement">
 <table>
 <tr>
@@ -3641,14 +3628,14 @@ property name (so that the OWL property declaration is unique in the ontology), 
 </table>
 </div>
 <div class="paragraph">
-<p>Properties from INSPIRE application schemas that have a value type from ISO 19107 are aligned with GeoSPARQL and the ISA Programme Location Core Vocabulary (LOCN) - see the <a href="#ref_cr_prop_alignments">property alignment requirements in the schema conversion rules chapter</a>. Both specifications (GeoSPARQL and LOCN) support WKT and GML for serializing a geometry.</p>
+<p>Properties from INSPIRE application schemas that have a value type from ISO 19107 are aligned with GeoSPARQL and the ISA Programme Location Core Vocabulary (LOCN) - see the <a href="#ref_cr_prop_alignment">property alignment requirements in the schema conversion rules chapter</a>. Both specifications (GeoSPARQL and LOCN) support WKT and GML for serializing a geometry.</p>
 </div>
 <div class="paragraph">
 <p>The requirement establishes WKT and GML as the main formats for encoding geometry information in INSPIRE RDF data. At the same time, however, the requirement does not preclude addition of predicates from GeoSPARQL (gsp:hasGeometry) and LOCN (locn:geometry) with other geometry serializations. In summary, the requirement establishes a suitable level of interoperability while offering enough flexibility to encode geometry in other formats.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="ref_instance_metadata">10.5. Encoding metadata</h3>
+<h3 id="ref_instance_cr_metadata">10.5. Encoding metadata</h3>
 <div class="paragraph">
 <p>According to the <a href="#geodcat_ap">GeoDCAT-AP</a> specification, <em>"GeoDCAT-AP provides an RDF syntax binding for the union of metadata elements of the core profile of ISO 19115:2003 and those defined in the framework of the INSPIRE Directive"</em>. It is therefore well-suited to implement MD_Metadata in the context of INSPIRE.</p>
 </div>
@@ -3695,9 +3682,30 @@ property name (so that the OWL property declaration is unique in the ontology), 
 </tr>
 </table>
 </div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Relevant issue(s):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/32">Metadata on resource level</a></p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_value_collections">10.6. Value collections</h3>
+<h3 id="ref_instance_cr_value_collections">10.6. Value collections</h3>
 <div id="REQ/OWL/instance/valuecollections" class="admonitionblock requirement">
 <table>
 <tr>
@@ -3715,6 +3723,15 @@ property name (so that the OWL property declaration is unique in the ontology), 
 </div>
 <div class="paragraph">
 <p>These RDF constructs do not add particular value, since the INSPIRE application schemas do not make use of ordering and uniqueness indicators for properties with multiplicity greater than one.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ref_instance_cr_extensions">10.7. Extensions</h3>
+<div class="paragraph">
+<p>A publisher may have more information about a spatial object than what is covered by the INSPIRE schemas. When encoding the spatial object as an RDF resource, the information that is covered by the INSPIRE schemas should be encoded as defined by this document. The additional information can be added to that resource in any way the publisher likes.</p>
+</div>
+<div class="paragraph">
+<p>This extensibility is one of the benefits of RDF: a resource can be of any type, also multiple types - with according information expressed via RDF statements where the resource is the subject.</p>
 </div>
 </div>
 </div>
@@ -3764,14 +3781,14 @@ property name (so that the OWL property declaration is unique in the ontology), 
 <p><a id="w3c_rdfxml"></a><a href="http://www.w3.org/TR/rdf-syntax-grammar/">W3C RDF 1.1 XML Syntax</a></p>
 </div>
 <div class="paragraph">
-<p><a id="w3c_sdw_bp"></a> <a href="https://www.w3.org/TR/2017/NOTE-sdw-bp-20170105">Spatial Data on the Web Best Practices, W3C Working Group Note 05 January 2017</a></p>
+<p><a id="w3c_sdw_bp"></a> <a href="https://www.w3.org/TR/2017/NOTE-sdw-bp-20170511/">Spatial Data on the Web Best Practices, W3C Working Group Note 11 May 2017</a></p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-01-30 16:59:43 Mitteleuropõische Zeit
+Last updated 2017-07-17 14:40:08 Mitteleuropõische Sommerzeit
 </div>
 </div>
 </body>

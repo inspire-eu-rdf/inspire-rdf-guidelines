@@ -1,7 +1,5 @@
 = Terms and abbreviations
 
-#TBD#
-
 [[ref_terms]]
 == Terms
 
@@ -41,7 +39,7 @@ NOTE: It should be noted that the term has a different meaning in the ISO 19100 
  
 spatial object type:: classification of spatial objects <<inspire_d25>>
 
-NOTE: In the conceptual schema language UML a spatial object type will be described by a class with stereotype <<featureType>>.
+NOTE: In the conceptual schema language UML a spatial object type will be described by a class with stereotype \<<featureType>>.
 
 transfer protocol:: common set of rules for defining interactions between distributed systems <<iso_19118>>
 
@@ -107,16 +105,18 @@ This standard uses a number of namespace prefixes throughout; they are listed in
 [cols="<15,<85",width="90%",options="header"]
 |===
 | Prefix | Namespace
+| base | http://inspire.ec.europa.eu/ont/base#
 | dcat | http://www.w3.org/ns/dcat#
 | dct | http://purl.org/dc/terms/
 | gsp | http://www.opengis.net/ont/geosparql#
 | gmlowl | http://www.opengis.net/ont/gml#
-| iso19150-2 | http://def.isotc211.org/iso19150-2/2012/base#
+| iso19150-2 | http://def.isotc211.org/iso19150/-2/2012/base#
 | locn | https://www.w3.org/ns/locn#
 | owl | http://www.w3.org/2002/07/owl#
 | rdf | http://www.w3.org/1999/02/22-rdf-syntax-ns#
 | rdfs | http://www.w3.org/2000/01/rdf-schema#
 | sfowl | http://www.opengis.net/ont/sf#
 | skos | http://www.w3.org/2004/02/skos/core#
+| time | http://www.w3.org/2006/time#
 | xsd | http://www.w3.org/2001/XMLSchema#
 |===

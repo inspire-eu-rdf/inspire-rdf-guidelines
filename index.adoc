@@ -29,16 +29,14 @@ Infrastructure for Spatial Information in Europe#
 |===
 
 
-WARNING: WORK IN PROGRESS
-
 
 = Guidelines for the RDF encoding of spatial data
 [frame="topbot",grid="none"]
 |===
 | *Title* | Guidelines for the RDF encoding of spatial data
-| *Status* | Draft (work in progress)
+| *Status* | Draft
 | *Creator* | ARE3NA project "INSPIRE Re3ference Platform Phase 2"
-| *Date* | 2017-01-31
+| *Date* | 2017-07-17
 | *Subject* | INSPIRE encoding rules for representing spatial data as RDF
 | *Publisher* | ARE3NA project "INSPIRE Re3ference Platform Phase 2"
 | *Type* | Text
@@ -58,8 +56,6 @@ toc::[]
 :leveloffset: +1
 
 include::foreword.adoc[]
-
-include::introduction.adoc[]
 
 :numbered:
 include::scope.adoc[]
