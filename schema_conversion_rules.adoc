@@ -973,8 +973,9 @@ NOTE: Because the information for mapping, aligning, and omitting properties can
 =======
 Relevant issue(s):
 
+* https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/15[Property re-use - INSPIRE property dictionary]
 * https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/16[Reuse of common Linked Data Vocabularies]
-* https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/17[Including information for mapping classes and properties to common definitions in the conceptual model]
+* https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/30[GeographicPosition.default is context-sensitive]
 * https://github.com/inspire-eu-rdf/inspire-rdf-guidelines/issues/37[properties to link into Inspire RDF resources]
 
 =======
