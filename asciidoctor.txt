@@ -1,1 +1,0 @@
-asciidoctor -r ./asciidoctor-extensions/custom_blocks.rb -r ./asciidoctor-extensions/register_turtle.rb index.adoc
